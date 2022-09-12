@@ -14,6 +14,11 @@ public class Superhero {
         this.styrkepoint = styrkepoint;
     }
 
+
+    public Superhero() {
+        Superhero brugerHero = new Superhero(navn, superkraft, menneskeform, introår, styrkepoint);
+    }
+
     //getter
     public String getNavn() {
         return navn;
