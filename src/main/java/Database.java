@@ -1,9 +1,9 @@
 public class Database {
 
-
     private Superhero superhero = new Superhero();
+    private Superhero[] superheroArray;
 
-    public void Superhero() {
+    public void createSuperhelte() {
 
         Superhero helt1 = new Superhero(superhero.getNavn(), superhero.getSuperkraft(),
                 superhero.getMenneskeform(), superhero.getIntroår(), superhero.getStyrkepoint());
@@ -20,6 +20,14 @@ public class Database {
         Superhero helt5 = new Superhero(superhero.getNavn(), superhero.getSuperkraft(),
                 superhero.getMenneskeform(), superhero.getIntroår(), superhero.getStyrkepoint());
 
-        Superhero[] superheroArray = new Superhero[]{helt1, helt2, helt3, helt4, helt5};
+        superheroArray = new Superhero[]{helt1, helt2, helt3, helt4, helt5};
+    }
+
+    public Superhero[] getSuperheroArray() {
+        return superheroArray;
     }
 }
+
+
+
+
