@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -7,45 +6,45 @@ public class Main {
 
         Database database = new Database();
         int count = 1;
-        do {
-            Scanner scan = new Scanner(System.in);
+        int startside;
 
-            System.out.println("Velkommen til MySuperheroList");
+        System.out.println("Velkommen til MySuperheroList");
+        do {
+
+            Scanner scan = new Scanner(System.in);
             System.out.println("1. Opret Superhelte");
             System.out.println("9. Luk programmet");
-            int startside = scan.nextInt();
+            startside = scan.nextInt();
+            scan.nextLine();
             System.out.println("-----------------------------");
 
-            if (startside < 2) {
+            if (startside == 1) {
 
-                System.out.println("Lav en superhelt (" + count + ")");
+                System.out.println("Opret en superhelt (" + count + ")");
                 count++;
 
                 System.out.print("Indtast superhelt navn: ");
-                String navn = scan.next();
+                String navn = scan.nextLine();
 
                 System.out.print("Indtast superkraft: ");
-                String superkraft = scan.next();
+                String superkraft = scan.nextLine();
 
-                System.out.print("Er helten et menneske: ");
+                System.out.print("Er helten et menneske (true eller false): ");
                 boolean menneskeForm = scan.nextBoolean();
 
                 System.out.print("Heltens introduktionsår: ");
                 int introår = scan.nextInt();
 
-                System.out.print("Heltens styrkepoint: ");
-                int styrkepoint = scan.nextInt();
+                System.out.print("Heltens styrkepoint (et normalt menneske er 1.0): ");
+                double styrkepoint = scan.nextDouble();
                 System.out.println(" ");
 
-                database.createSuperhelte(navn, superkraft, menneskeForm, introår, styrkepoint);
+                database.createSuperhero(navn, superkraft, menneskeForm, introår, styrkepoint);
             }
-
-            if (startside > 2) {
+                else if (startside == 9) {
                 System.out.println("Lukker programmet...");
             }
-        } while (true);
+        } while (startside != 9);
+
     }
-
-    //metode til database
-
 }

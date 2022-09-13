@@ -1,13 +1,16 @@
+import java.util.ArrayList;
+
 public class Database {
 
+    ArrayList<Superhero> helteDatabase = new ArrayList<>();
+
     private Superhero superhero = new Superhero();
-    private Superhero[] superheroArray;
 
-    public void createSuperhelte(String navn, String superkraft, boolean menneskeForm, int introår, int styrkepoint) {
+    public void createSuperhero(String navn, String superkraft, boolean menneskeForm, int introår, double styrkepoint) {
 
-        Superhero helt = new Superhero(navn, superkraft, menneskeForm, introår, styrkepoint);
+        Superhero hero = new Superhero(navn, superkraft, menneskeForm, introår, styrkepoint);
+        helteDatabase.add(hero);
     }
-
 }
 
 

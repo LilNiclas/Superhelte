@@ -4,9 +4,9 @@ public class Superhero {
     private String superkraft;
     private boolean menneskeform;
     private int introår;
-    private int styrkepoint;
+    private double styrkepoint;
 
-    public Superhero(String navn, String superkraft, boolean menneskeform, int introår, int styrkepoint) {
+    public Superhero(String navn, String superkraft, boolean menneskeform, int introår, double styrkepoint) {
         this.navn = navn;
         this.superkraft = superkraft;
         this.menneskeform = menneskeform;
@@ -36,7 +36,7 @@ public class Superhero {
         return introår;
     }
 
-    public int getStyrkepoint() {
+    public double getStyrkepoint() {
         return styrkepoint;
     }
 }
