@@ -6,10 +6,14 @@ public class Database {
 
     private Superhero superhero = new Superhero();
 
-    public void createSuperhero(String navn, String superkraft, boolean menneskeForm, int introår, double styrkepoint) {
+    public void createSuperhero(String navn, String superkraft, char menneske, int introår, double styrkepoint) {
 
-        Superhero hero = new Superhero(navn, superkraft, menneskeForm, introår, styrkepoint);
+        Superhero hero = new Superhero(navn, superkraft, menneske, introår, styrkepoint);
         helteDatabase.add(hero);
+    }
+
+    public ArrayList<Superhero> getHelteDatabase(){
+        return getHelteDatabase();
     }
 }
 

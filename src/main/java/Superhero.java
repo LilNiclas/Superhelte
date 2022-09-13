@@ -2,21 +2,21 @@ public class Superhero {
 
     private String navn;
     private String superkraft;
-    private boolean menneskeform;
+    private char menneske;
     private int introår;
     private double styrkepoint;
 
-    public Superhero(String navn, String superkraft, boolean menneskeform, int introår, double styrkepoint) {
+    public Superhero(String navn, String superkraft, char menneske, int introår, double styrkepoint) {
         this.navn = navn;
         this.superkraft = superkraft;
-        this.menneskeform = menneskeform;
+        this.menneske = menneske;
         this.introår = introår;
         this.styrkepoint = styrkepoint;
     }
 
 
-    public Superhero() {
-        Superhero brugerHero = new Superhero(navn, superkraft, menneskeform, introår, styrkepoint);
+   public Superhero() {
+        Superhero brugerHero = new Superhero(navn, superkraft, menneske, introår, styrkepoint);
     }
 
     //getter
@@ -28,8 +28,8 @@ public class Superhero {
         return superkraft;
     }
 
-    public boolean getMenneskeform() {
-        return menneskeform;
+    public char getMenneskeform() {
+        return menneske;
     }
 
     public int getIntroår() {
@@ -39,4 +39,9 @@ public class Superhero {
     public double getStyrkepoint() {
         return styrkepoint;
     }
+
+    /*public String toString(){
+        return "Navn: " + navn + "\nSuperkraft: " + superkraft + "\nEr menneske: " + menneskeform +
+                "\nIntroduktionsår: " + introår + "\nStyrke: " + styrkepoint + "\n";
+    }*/
 }
