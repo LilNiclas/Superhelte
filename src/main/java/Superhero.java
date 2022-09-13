@@ -2,11 +2,11 @@ public class Superhero {
 
     private String navn;
     private String superkraft;
-    private String menneskeform;
+    private boolean menneskeform;
     private int introår;
     private int styrkepoint;
 
-    public Superhero(String navn, String superkraft, String menneskeform, int introår, int styrkepoint) {
+    public Superhero(String navn, String superkraft, boolean menneskeform, int introår, int styrkepoint) {
         this.navn = navn;
         this.superkraft = superkraft;
         this.menneskeform = menneskeform;
@@ -28,7 +28,7 @@ public class Superhero {
         return superkraft;
     }
 
-    public String getMenneskeform() {
+    public boolean getMenneskeform() {
         return menneskeform;
     }
 
