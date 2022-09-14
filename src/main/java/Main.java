@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 
+    public void Startside(){
+
+    }
 
     public static void main(String[] arg) {
         Database database = new Database();
@@ -62,10 +65,15 @@ public class Main {
                 }
             }
 
-            if (startside == 9) {
-                System.out.println("Lukker programmet...");
+            if (startside == 5) {
+                String searchTerm = scan.nextLine();
+                Superhero superhero = database.searchFor(searchTerm);
+                System.out.println(superhero);
             }
 
+            if (startside == 9) {
+                System.out.println("Lukker programmet.. .");
+            }
 
         } while (startside != 9);
     }

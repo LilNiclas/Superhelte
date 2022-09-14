@@ -35,8 +35,8 @@ public class Superhero {
         return styrkepoint;
     }
 
-    /*public String toString(){
-        return "Navn: " + navn + "\nSuperkraft: " + superkraft + "\nEr menneske: " + menneskeform +
-                "\nIntroduktionsår: " + introår + "\nStyrke: " + styrkepoint + "\n";
-    }*/
+    @Override
+    public String toString() {
+        return("\nName: " + navn + "\n" + "Superkraft: " + superkraft + "\n" + "Menneske: " + menneske + "\n" + "Introduktions år: " + introår + "\n" + "Styrkepoint: " + styrkepoint + "\n\n");
+    }
 }

@@ -10,11 +10,18 @@ public class Database {
         helteDatabase.add(hero);
     }
 
-    public ArrayList<Superhero> getHelteDatabase(){
+    public ArrayList<Superhero> getHelteDatabase() {
         return helteDatabase;
     }
 
-
+    public Superhero searchFor(String searchTerm) {
+        for (Superhero hero : helteDatabase) {
+            if (hero.getNavn().toLowerCase().contains(searchTerm.toLowerCase())) {
+                return hero;
+            }
+        }
+        return null;
+    }
 
 }
 
