@@ -26,7 +26,7 @@ public class Main {
             } else if (startside == 5) {
                 søgHelte();
             } else if (startside == 9) {
-                System.out.println("Lukker program");
+                System.out.println("Lukker program...");
                 System.exit(0);
             }
         } while (startside != 9);
@@ -43,7 +43,7 @@ public class Main {
             System.out.print("Indtast superkraft: ");
             String superkraft = scan.nextLine();
 
-            System.out.print("Er helten et menneske (j eller n: )");
+            System.out.print("Er helten et menneske (j eller n)");
             boolean menneske = true;
             char humanSvar = scan.nextLine().charAt(0);
             if (humanSvar == 'n') {
@@ -75,12 +75,14 @@ public class Main {
                 System.out.println("Er helt menneske?" + helt.isMenneske());
                 System.out.println("Introduktionsår: " + helt.getIntroår());
                 System.out.println("Styrkepoint: " + helt.getStyrkepoint());
+                System.out.println(" ");
             }
         }
     }
 
     public void søgHelte() {
         if (startside == 5) {
+            System.out.print("Indtast en karakteristik om helten: ");
             String searchTerm = scan.nextLine();
             Superhero superhero = database.searchFor(searchTerm);
             System.out.println(superhero);
@@ -91,4 +93,4 @@ public class Main {
         Main program = new Main();
         program.userStart();
     }
-    }
+}
