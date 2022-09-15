@@ -18,7 +18,6 @@ public class Database {
     }
 
     public Superhero searchSuperhero(String searchTerm) {
-
         for (Superhero hero : heroDatabase) {
             if (hero.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResult.add(hero);

@@ -72,7 +72,7 @@ public class UserInterface {
 
                 System.out.println("Superhero name: " + hero.getName());
                 System.out.println("Superpower: " + hero.getSuperpower());
-                System.out.println("Are they human: " + hero.isHuman());
+                System.out.println("Are they human: " + hero.isHuman()); //TODO: print "yes/no" ikke true/false. Ugyldigt input bliver også til true
                 System.out.println("Introduction year: " + hero.getIntroYear());
                 System.out.println("Strength points: " + hero.getStrengthPoint());
                 System.out.println("\n");
@@ -85,6 +85,7 @@ public class UserInterface {
             System.out.print("Enter a characteristic about a hero: ");
             String searchTerm = scan.nextLine();
             Superhero superhero = database.searchSuperhero(searchTerm);
+            //TODO: Den gemmer mine tidligere search og printer dem igen
         }
     }
 
@@ -110,14 +111,14 @@ public class UserInterface {
                 editHero.setName(newName);
 
             System.out.println("Superpower: " + editHero.getSuperpower());
-            String newSuperpower= scan.nextLine();
+            String newSuperpower = scan.nextLine();
             if (!newSuperpower.isEmpty())
                 editHero.setSuperpower(newSuperpower);
 
-            /*System.out.println("human: " + editHero.getisHuman());
-            String newHuman = scan.nextBoolean();
+            System.out.println("Human: " + editHero.isHuman());
+            String newHuman = scan.nextLine();
             if (!newHuman.isEmpty())
-                editHero.setHuman(newMenneske);*/
+                editHero.setHuman(Boolean.parseBoolean(newHuman));
 
             System.out.println("Introduction year: " + editHero.getIntroYear());
             String newIntroYear = scan.nextLine();
@@ -127,8 +128,9 @@ public class UserInterface {
 
             System.out.println("Strength points: " + editHero.getStrengthPoint());
             String newStrengthpoint = scan.nextLine();
-            if (!newStrengthpoint.isEmpty())
+            if (!newStrengthpoint.isEmpty()) {
                 editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
+            }
         }
     }
 

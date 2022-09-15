@@ -52,6 +52,6 @@ public class Superhero {
     @Override
     public String toString() {
         return ("Name: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
-                + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint+ " \n ");
+                + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint + " \n ");
     }
 }
