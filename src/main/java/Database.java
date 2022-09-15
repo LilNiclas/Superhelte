@@ -20,7 +20,6 @@ public class Database {
                 return hero;
             }
         }
-        System.out.println("Ingen helte er tilknyttet den givne information");
         return null;
 
     }
