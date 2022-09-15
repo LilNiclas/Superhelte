@@ -4,120 +4,131 @@ public class UserInterface {
     Database database = new Database();
     Scanner scan = new Scanner(System.in);
     int count = 1;
-    int startside;
+    int menue;
 
 
     public void userStart() {
         do {
-            System.out.println("Velkommen til MySuperheroList");
-            System.out.println("1. Opret Superhelte");
-            System.out.println("3. Superhelte register");
-            System.out.println("5. Søg helte");
-            System.out.println("7. Rediger helt");
-            System.out.println("9. Luk programmet");
+            System.out.println("Welcome to MySuperheroList");
+            System.out.println("1. Create a superhero");
+            System.out.println("3. Registered superheroes");
+            System.out.println("5. Search for a superhero");
+            System.out.println("7. Edit hero");
+            System.out.println("9. Exit program");
             System.out.println("-----------------------------");
-            startside = scan.nextInt();
+            menue = scan.nextInt();
             scan.nextLine();
 
-            if (startside == 1) {
-                opretHelt();
-            } else if (startside == 3) {
-                superhelteRegister();
-            } else if (startside == 5) {
-                søgHelte();
-            } else if (startside == 7) {
-                redigerHelt();
-            } else if (startside == 9) {
-                System.out.println("Lukker program...");
+            if (menue == 1) {
+                createHero();
+            } else if (menue == 3) {
+                registerHero();
+            } else if (menue == 5) {
+                searchHero();
+            } else if (menue == 7) {
+                editHero();
+            } else if (menue == 9) {
+                System.out.println("Exiting program...");
                 System.exit(0);
             }
-        } while (startside != 9);
+        } while (menue != 9);
     }
 
-    public void opretHelt() {
-        if (startside == 1) {
-            System.out.println("Opret en superhelt (" + count + ")");
+    public void createHero() {
+        if (menue == 1) {
+            System.out.println("Create a hero (" + count + ")");
             count++;
 
-            System.out.print("Indtast superhelt navn: ");
-            String navn = scan.nextLine();
+            System.out.print("Superhero name: ");
+            String name = scan.nextLine();
 
-            System.out.print("Indtast superkraft: ");
-            String superkraft = scan.nextLine();
+            System.out.print("Superpower: ");
+            String superpower = scan.nextLine();
 
-            System.out.print("Er helten et menneske: (j eller n) ");
-            boolean menneske = true;
-            char humanSvar = scan.nextLine().charAt(0);
-            if (humanSvar == 'n') {
-                menneske = false;
-            } else if (humanSvar == 'j') {
-                menneske = true;
+            System.out.print("Are they human: (y or n) ");
+            boolean human = true;
+            char humanAnswer = scan.nextLine().charAt(0);
+            if (humanAnswer == 'n') {
+                human = false;
+            } else if (humanAnswer == 'y') {
+                human = true;
             } else {
-                System.out.println("ugyldigt input");
+                System.out.println("Invalid input");
             }
 
-            System.out.print("Heltens introduktionsår: ");
-            int introår = scan.nextInt();
-            System.out.print("Heltens styrkepoint (et normalt menneske er 1.0): ");
-            double styrkepoint = scan.nextDouble();
+            System.out.print("Introduction year: ");
+            int introYear = scan.nextInt();
+            System.out.print("Strength points (normal human is 1.0): ");
+            double strengthPoint = scan.nextDouble();
             System.out.println(" ");
 
-            database.createSuperhero(navn, superkraft, menneske, introår, styrkepoint);
+            database.createSuperhero(name, superpower, human, introYear, strengthPoint);
         }
     }
 
-    public void superhelteRegister() {
-        if (startside == 3) {
-            for (Superhero helt : database.getHelteDatabase()) {
+    public void registerHero() {
+        if (menue == 3) {
+            for (Superhero hero : database.getHeroDatabase()) {
 
-                System.out.println("Superhelte navn: " + helt.getNavn());
-                System.out.println("Superkraft: " + helt.getSuperkraft());
-                System.out.println("Er helt menneske? " + helt.isMenneske());
-                System.out.println("Introduktionsår: " + helt.getIntroår());
-                System.out.println("Styrkepoint: " + helt.getStyrkepoint());
-                System.out.println(" ");
+                System.out.println("Superhero name: " + hero.getName());
+                System.out.println("Superpower: " + hero.getSuperpower());
+                System.out.println("Are they human: " + hero.isHuman());
+                System.out.println("Introduction year: " + hero.getIntroYear());
+                System.out.println("Strength points: " + hero.getStrengthPoint());
+                System.out.println("\n");
             }
         }
     }
 
-    public void søgHelte() {
-        if (startside == 5) {
-            System.out.print("Indtast en karakteristik om helten: ");
+    public void searchHero() {
+        if (menue == 5) {
+            System.out.print("Enter a characteristic about a hero: ");
             String searchTerm = scan.nextLine();
             Superhero superhero = database.searchSuperhero(searchTerm);
         }
     }
 
-    public void redigerHelt() {
-        if (startside == 5) {
+    public void editHero() {
+        if (menue == 7) {
 
-            for (int i = 0; i < database.getSøgeResultat().size(); i++) {
-                System.out.println(i + 1 + ":" + database.getSøgeResultat().get(i));
+            System.out.println("Superhelte");
+            for (int i = 0; i < database.getHeroDatabase().size(); i++) {
+                System.out.println(i + 1 + ":" + database.getHeroDatabase().get(i));
             }
-            System.out.print("Tast nr. for helt der skal redigeres: ");
-            int nr = scan.nextInt();
+
+            System.out.print("Enter the number for the superhero to be edited: ");
+            int number = scan.nextInt();
             scan.nextLine();
 
-            Superhero redigerHelt = database.getSøgeResultat().get(nr - 1);
-            System.out.println("Rediger Superhelt information:");
-            String nyNavn = scan.nextLine();
-            if (!nyNavn.isEmpty())
-                redigerHelt.setNavn(nyNavn);
+            Superhero editHero = database.getHeroDatabase().get(number - 1);
+            System.out.println("Edit superhero's information: " + editHero);
 
-            System.out.println("Rediger Superhelt information:");
-            String nySuperkraft = scan.nextLine();
-            if (!nySuperkraft.isEmpty())
-                redigerHelt.setSuperkraft(nySuperkraft);
+            System.out.println("Edit data press ENTER. Don't want to edit data press Enter");
+            System.out.println("Name: " + editHero.getName());
+            String newName = scan.nextLine();
+            if (!newName.isEmpty())
+                editHero.setName(newName);
 
-            /*System.out.println("Rediger Superhelt information:");
-            String nyMenneske = scan.nextBoolean();
-            if (!nyMenneske.isEmpty())
-                redigerHelt.setMenneske(nyMenneske);
+            System.out.println("Superpower: " + editHero.getSuperpower());
+            String newSuperpower= scan.nextLine();
+            if (!newSuperpower.isEmpty())
+                editHero.setSuperpower(newSuperpower);
 
-            System.out.println("Rediger Superhelt information:");
-            String nyIntroår = scan.nextLine();
-            if (!nyNavn.isEmpty())
-                redigerHelt.setNavn(nyNavn);*/
+            /*System.out.println("human: " + editHero.getisHuman());
+            String newHuman = scan.nextBoolean();
+            if (!newHuman.isEmpty())
+                editHero.setHuman(newMenneske);*/
+
+            System.out.println("Introduction year: " + editHero.getIntroYear());
+            String newIntroYear = scan.nextLine();
+            if (!newIntroYear.isEmpty()) {
+                editHero.setIntroYear(Integer.parseInt(newIntroYear));
+            }
+
+            System.out.println("Strength points: " + editHero.getStrengthPoint());
+            String newStrengthpoint = scan.nextLine();
+            if (!newStrengthpoint.isEmpty())
+                editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
         }
     }
 

@@ -3,38 +3,37 @@ import java.util.Scanner;
 
 public class Database {
 
-    ArrayList<Superhero> helteDatabase = new ArrayList<>();
-    ArrayList<Superhero> søgeResultat = new ArrayList<>();
+    ArrayList<Superhero> heroDatabase = new ArrayList<>();
+    ArrayList<Superhero> searchResult = new ArrayList<>();
 
 
-    public void createSuperhero(String navn, String superkraft, boolean menneske, int introår, double styrkepoint) {
+    public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
 
-        Superhero hero = new Superhero(navn, superkraft, menneske, introår, styrkepoint);
-        helteDatabase.add(hero);
+        Superhero hero = new Superhero(name, superpower, human, introYear, strengthPoint);
+        heroDatabase.add(hero);
     }
 
-    public ArrayList<Superhero> getHelteDatabase() {
-        return helteDatabase;
+    public ArrayList<Superhero> getHeroDatabase() {
+        return heroDatabase;
     }
 
     public Superhero searchSuperhero(String searchTerm) {
-        for (Superhero hero : helteDatabase) {
-            if (hero.getNavn().toLowerCase().contains(searchTerm.toLowerCase())) {
-                søgeResultat.add(hero);
+
+        for (Superhero hero : heroDatabase) {
+            if (hero.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                searchResult.add(hero);
             }
         }
-        if (!søgeResultat.isEmpty())
-            for (Superhero helt : søgeResultat)
-                System.out.println(helt);
+        if (!searchResult.isEmpty())
+            for (Superhero hero : searchResult)
+                System.out.println(hero);
         else
-            System.out.println("Kunne ikke finde noget der matchede til: " + "\n" + searchTerm + "\n");
+            System.out.println("Couldn't find a match: " + "\n" + searchTerm + "\n");
         return null;
     }
 
-    public ArrayList<Superhero> getSøgeResultat(){
-    return søgeResultat;
+    public ArrayList<Superhero> getSearchResult(){
+    return searchResult;
 
     }
-
-
 }

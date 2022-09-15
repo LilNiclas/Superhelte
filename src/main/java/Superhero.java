@@ -1,58 +1,57 @@
 public class Superhero {
 
-    private String navn;
-    private String superkraft;
-    private boolean menneske;
-    private int introår;
-    private double styrkepoint;
+    private String name;
+    private String superpower;
+    private boolean human;
+    private int introYear;
+    private double strengthPoint;
 
-    public Superhero(String navn, String superkraft, boolean menneske, int introår, double styrkepoint) {
-        this.navn = navn;
-        this.superkraft = superkraft;
-        this.menneske = menneske;
-        this.introår = introår;
-        this.styrkepoint = styrkepoint;
-    }
-
-    //getter og setter
-    public String getNavn() {
-        return navn;
-    }
-    public void setNavn(String navn) {
-        this.navn = navn;
+    public Superhero(String name, String superpower, boolean menneske, int introYear, double strengthPoint) {
+        this.name = name;
+        this.superpower = superpower;
+        this.human = menneske;
+        this.introYear = introYear;
+        this.strengthPoint = strengthPoint;
     }
 
-    public String getSuperkraft() {
-        return superkraft;
+    public String getName() {
+        return name;
     }
-    public void setSuperkraft(String superkraft) {
-        this.superkraft = superkraft;
-    }
-
-    public boolean isMenneske() {
-        return menneske;
-    }
-    public void setMenneske(boolean menneske) {
-        this.menneske = menneske;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getIntroår() {
-        return introår;
+    public String getSuperpower() {
+        return superpower;
     }
-    public void setIntroår(int introår) {
-        this.introår = introår;
+    public void setSuperpower(String superpower) {
+        this.superpower = superpower;
     }
 
-    public double getStyrkepoint() {
-        return styrkepoint;
+    public boolean isHuman() {
+        return human;
     }
-    public void setStyrkepoint(double styrkepoint) {
-        this.styrkepoint = styrkepoint;
+    public void setHuman(boolean human) {
+        this.human = human;
+    }
+
+    public int getIntroYear() {
+        return introYear;
+    }
+    public void setIntroYear(int introYear) {
+        this.introYear = introYear;
+    }
+
+    public double getStrengthPoint() {
+        return strengthPoint;
+    }
+    public void setStrengthPoint(double strengthPoint) {
+        this.strengthPoint = strengthPoint;
     }
 
     @Override
     public String toString() {
-        return ("Name: " + navn + "\n" + "Superkraft: " + superkraft + "\n" + "Menneske: " + menneske
-                + "\n" + "Introduktions år: " + introår + "\n" + "Styrkepoint: " + styrkepoint + " \n ");
+        return ("Name: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
+                + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint+ " \n ");
     }
 }
