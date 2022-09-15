@@ -83,12 +83,7 @@ public class UserInterface {
         if (startside == 5) {
             System.out.print("Indtast en karakteristik om helten: ");
             String searchTerm = scan.nextLine();
-            Superhero superhero = database.searchFor(searchTerm);
-            if (superhero != null) {
-                System.out.println(superhero);
-            } else {
-                System.out.println("intet match");
-            }
+            Superhero superhero = database.searchSuperhero(searchTerm);
         }
     }
 

@@ -14,14 +14,20 @@ public class Database {
         return helteDatabase;
     }
 
-    public Superhero searchFor(String searchTerm) {
+    public Superhero searchSuperhero(String searchTerm) {
+        ArrayList<Superhero> søgeResultat = new ArrayList<>();
         for (Superhero hero : helteDatabase) {
             if (hero.getNavn().toLowerCase().contains(searchTerm.toLowerCase())) {
-                return hero;
+                søgeResultat.add(hero);
+
+                if (!søgeResultat.isEmpty())
+                    for (Superhero helt : søgeResultat)
+                        System.out.println(helt);
+                else
+                    System.out.println("Kunne ikke finde noget der matchede til: " + "\n" + searchTerm + "\n");
             }
         }
         return null;
-
     }
 
 }
