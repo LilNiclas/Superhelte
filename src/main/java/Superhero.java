@@ -14,25 +14,40 @@ public class Superhero {
         this.styrkepoint = styrkepoint;
     }
 
-    //getter
+    //getter og setter
     public String getNavn() {
         return navn;
+    }
+    public void setNavn(String navn) {
+        this.navn = navn;
     }
 
     public String getSuperkraft() {
         return superkraft;
     }
+    public void setSuperkraft(String superkraft) {
+        this.superkraft = superkraft;
+    }
 
     public boolean isMenneske() {
         return menneske;
+    }
+    public void setMenneske(boolean menneske) {
+        this.menneske = menneske;
     }
 
     public int getIntroår() {
         return introår;
     }
+    public void setIntroår(int introår) {
+        this.introår = introår;
+    }
 
     public double getStyrkepoint() {
         return styrkepoint;
+    }
+    public void setStyrkepoint(double styrkepoint) {
+        this.styrkepoint = styrkepoint;
     }
 
     @Override

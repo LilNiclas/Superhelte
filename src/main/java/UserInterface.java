@@ -13,6 +13,7 @@ public class UserInterface {
             System.out.println("1. Opret Superhelte");
             System.out.println("3. Superhelte register");
             System.out.println("5. Søg helte");
+            System.out.println("7. Rediger helt");
             System.out.println("9. Luk programmet");
             System.out.println("-----------------------------");
             startside = scan.nextInt();
@@ -24,6 +25,8 @@ public class UserInterface {
                 superhelteRegister();
             } else if (startside == 5) {
                 søgHelte();
+            } else if (startside == 7) {
+                redigerHelt();
             } else if (startside == 9) {
                 System.out.println("Lukker program...");
                 System.exit(0);
@@ -61,8 +64,6 @@ public class UserInterface {
 
             database.createSuperhero(navn, superkraft, menneske, introår, styrkepoint);
         }
-
-
     }
 
     public void superhelteRegister() {
@@ -84,6 +85,39 @@ public class UserInterface {
             System.out.print("Indtast en karakteristik om helten: ");
             String searchTerm = scan.nextLine();
             Superhero superhero = database.searchSuperhero(searchTerm);
+        }
+    }
+
+    public void redigerHelt() {
+        if (startside == 5) {
+
+            for (int i = 0; i < database.getSøgeResultat().size(); i++) {
+                System.out.println(i + 1 + ":" + database.getSøgeResultat().get(i));
+            }
+            System.out.print("Tast nr. for helt der skal redigeres: ");
+            int nr = scan.nextInt();
+            scan.nextLine();
+
+            Superhero redigerHelt = database.getSøgeResultat().get(nr - 1);
+            System.out.println("Rediger Superhelt information:");
+            String nyNavn = scan.nextLine();
+            if (!nyNavn.isEmpty())
+                redigerHelt.setNavn(nyNavn);
+
+            System.out.println("Rediger Superhelt information:");
+            String nySuperkraft = scan.nextLine();
+            if (!nySuperkraft.isEmpty())
+                redigerHelt.setSuperkraft(nySuperkraft);
+
+            /*System.out.println("Rediger Superhelt information:");
+            String nyMenneske = scan.nextBoolean();
+            if (!nyMenneske.isEmpty())
+                redigerHelt.setMenneske(nyMenneske);
+
+            System.out.println("Rediger Superhelt information:");
+            String nyIntroår = scan.nextLine();
+            if (!nyNavn.isEmpty())
+                redigerHelt.setNavn(nyNavn);*/
         }
     }
 
