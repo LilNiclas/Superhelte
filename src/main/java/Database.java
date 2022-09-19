@@ -19,6 +19,8 @@ public class Database {
     }
 
 
+
+
     public ArrayList<Superhero> searchSuperhero(String searchTerm) {
 
         ArrayList<Superhero> searchResult = new ArrayList<>();

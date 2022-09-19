@@ -1,14 +1,16 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
     Database database = new Database();
     Scanner scan = new Scanner(System.in);
     int count = 1;
-    int menue;
+    int menue = 0;
 
 
     public void userStart() {
+        boolean writingError = false;
         do {
             System.out.println("Welcome to MySuperheroList");
             System.out.println("1. Create a superhero");
@@ -17,26 +19,36 @@ public class UserInterface {
             System.out.println("7. Edit hero");
             System.out.println("9. Exit program");
             System.out.println("-----------------------------");
-            menue = scan.nextInt();
-            scan.nextLine();
 
-            if (menue == 1) {
-                createHero();
-            } else if (menue == 3) {
-                registerHero();
-            } else if (menue == 5) {
-                searchHero();
-            } else if (menue == 7) {
-                editHero();
-            } else if (menue == 9) {
-                System.out.println("Exiting program...");
-                System.exit(0);
-            }
-        } while (menue != 9);
+           try {
+               menue = scan.nextInt();
+               scan.nextLine();
+
+               if (menue == 1) {
+                   createHero();
+               } else if (menue == 3) {
+                   registerHero();
+               } else if (menue == 5) {
+                   searchHero();
+               } else if (menue == 7) {
+                   editHero();
+               } else if (menue == 9) {
+                   System.out.println("Exiting program...");
+                   System.exit(0);
+               }
+           }catch (InputMismatchException ime) {
+               System.out.println("An eroor occurred");
+               System.out.println("Write in numbers");
+               scan.nextLine();
+               writingError = true;
+           }
+        } while (menue != 9 || writingError == true);
     }
 
     public void createHero() {
+        boolean writingError = false;
         if (menue == 1) {
+
             System.out.println("Create a hero (" + count + ")");
             count++;
 
@@ -58,12 +70,36 @@ public class UserInterface {
             }
 
             System.out.print("Introduction year: ");
-            int introYear = scan.nextInt();
+            int introYear = 0;
+            do {
+                try {
+                    introYear = scan.nextInt();
+                    writingError = false;
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Writing error, write in intergers");
+                    writingError = true;
+                }
+            } while (writingError == true);
+
+
             System.out.print("Strength points (normal human is 1.0): ");
-            double strengthPoint = scan.nextDouble();
-            System.out.println(" ");
+            double strengthPoint = 0;
+            do {
+                try {
+                    strengthPoint = scan.nextDouble();
+                    System.out.println(" ");
+                    writingError = false;
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Writing error, write in numbers");
+                    writingError = true;
+                }
+            }while (writingError == true);
+
+
+
 
             database.createSuperhero(name, superpower, human, introYear, strengthPoint);
+
         }
     }
 
@@ -105,6 +141,7 @@ public class UserInterface {
     }
 
     public void editHero() {
+        boolean writingError = false;
         if (menue == 7) {
 
             System.out.println("Superheroes");
@@ -135,18 +172,39 @@ public class UserInterface {
             if (!newHuman.isEmpty())
                 editHero.setHuman(Boolean.parseBoolean(newHuman));
 
+
             System.out.println("Introduction year: " + editHero.getIntroYear());
-            String newIntroYear = scan.nextLine();
-            if (!newIntroYear.isEmpty()) {
-                editHero.setIntroYear(Integer.parseInt(newIntroYear));
-            }
+            do {
+                String newIntroYear = scan.nextLine();
+                if (!newIntroYear.isEmpty()) {
+                    try {
+                        editHero.setIntroYear(Integer.parseInt(newIntroYear));
+                        writingError = false;
+
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("An error occurred");
+                        System.out.println("Enter the introduction year in numbers");
+                        writingError = true;
+                    }
+                }
+            } while (writingError == true);
+
 
             System.out.println("Strength points: " + editHero.getStrengthPoint());
-            String newStrengthpoint = scan.nextLine();
-            if (!newStrengthpoint.isEmpty()) {
-                editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
-            }
+            do {
+                String newStrengthpoint = scan.nextLine();
+                if (!newStrengthpoint.isEmpty()) {
+
+                    try {
+                        editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
+                        writingError = false;
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("An error occurred");
+                        System.out.println("Enter strenght points in numbers");
+                        writingError = true;
+                    }
+                }
+            } while (writingError == true);
         }
     }
-
 }
