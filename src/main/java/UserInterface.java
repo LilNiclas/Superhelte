@@ -8,7 +8,6 @@ public class UserInterface {
     int count = 1;
     int menue = 0;
 
-
     public void userStart() {
         boolean writingError = false;
         do {
@@ -20,28 +19,28 @@ public class UserInterface {
             System.out.println("9. Exit program");
             System.out.println("-----------------------------");
 
-           try {
-               menue = scan.nextInt();
-               scan.nextLine();
+            try {
+                menue = scan.nextInt();
+                scan.nextLine();
 
-               if (menue == 1) {
-                   createHero();
-               } else if (menue == 3) {
-                   registerHero();
-               } else if (menue == 5) {
-                   searchHero();
-               } else if (menue == 7) {
-                   editHero();
-               } else if (menue == 9) {
-                   System.out.println("Exiting program...");
-                   System.exit(0);
-               }
-           }catch (InputMismatchException ime) {
-               System.out.println("An eroor occurred");
-               System.out.println("Write in numbers");
-               scan.nextLine();
-               writingError = true;
-           }
+                if (menue == 1) {
+                    createHero();
+                } else if (menue == 3) {
+                    registerHero();
+                } else if (menue == 5) {
+                    searchHero();
+                } else if (menue == 7) {
+                    editHero();
+                } else if (menue == 9) {
+                    System.out.println("Exiting program...");
+                    System.exit(0);
+                }
+            } catch (InputMismatchException ime) {
+                System.out.println("An eroor occurred");
+                System.out.println("Write in numbers");
+                scan.nextLine();
+                writingError = true;
+            }
         } while (menue != 9 || writingError == true);
     }
 
@@ -74,10 +73,14 @@ public class UserInterface {
             do {
                 try {
                     introYear = scan.nextInt();
+                    scan.nextLine();
                     writingError = false;
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Writing error, write in intergers");
+
+                } catch (InputMismatchException nfe) {
+                    System.out.println("Writing error, try writing in intergers");
+                    scan.nextLine();
                     writingError = true;
+
                 }
             } while (writingError == true);
 
@@ -87,19 +90,18 @@ public class UserInterface {
             do {
                 try {
                     strengthPoint = scan.nextDouble();
+                    scan.nextLine();
                     System.out.println(" ");
                     writingError = false;
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Writing error, write in numbers");
+                } catch (InputMismatchException nfe) {
+                    System.out.println("Writing error, try writing in numbers");
+                    scan.nextLine();
                     writingError = true;
+
                 }
-            }while (writingError == true);
-
-
-
+            } while (writingError == true);
 
             database.createSuperhero(name, superpower, human, introYear, strengthPoint);
-
         }
     }
 
