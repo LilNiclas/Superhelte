@@ -49,7 +49,6 @@ public class Superhero {
         this.strengthPoint = strengthPoint;
     }
 
-    @Override
     public String toString() {
         return ("Name: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
                 + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint + " \n ");

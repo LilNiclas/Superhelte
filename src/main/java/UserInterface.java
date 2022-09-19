@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -84,15 +85,29 @@ public class UserInterface {
         if (menue == 5) {
             System.out.print("Enter a characteristic about a hero: ");
             String searchTerm = scan.nextLine();
-            Superhero superhero = database.searchSuperhero(searchTerm);
-            //TODO: Den gemmer mine tidligere search og printer dem igen
+
+            ArrayList<Superhero> searchResult = database.searchSuperhero(searchTerm);
+
+            if (searchResult.isEmpty()) {
+                System.out.println("No superheroes were found");
+            } else {
+                System.out.println("Superheroes found");
+                for (Superhero hero : searchResult) {
+                    System.out.println("Superhero name: " + hero.getName());
+                    System.out.println("Superpower: " + hero.getSuperpower());
+                    System.out.println("Are they human: " + hero.isHuman());
+                    System.out.println("Introduction year: " + hero.getIntroYear());
+                    System.out.println("Strength points: " + hero.getStrengthPoint());
+                    System.out.println("\n");
+                }
+            }
         }
     }
 
     public void editHero() {
         if (menue == 7) {
 
-            System.out.println("Superhelte");
+            System.out.println("Superheroes");
             for (int i = 0; i < database.getHeroDatabase().size(); i++) {
                 System.out.println(i + 1 + ":" + database.getHeroDatabase().get(i));
             }

@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Database {
 
-    ArrayList<Superhero> heroDatabase = new ArrayList<>();
-    ArrayList<Superhero> searchResult = new ArrayList<>();
+
+    private ArrayList<Superhero> heroDatabase = new ArrayList<>();
 
 
     public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
@@ -13,26 +13,21 @@ public class Database {
         heroDatabase.add(hero);
     }
 
+
     public ArrayList<Superhero> getHeroDatabase() {
         return heroDatabase;
     }
 
-    public Superhero searchSuperhero(String searchTerm) {
+
+    public ArrayList<Superhero> searchSuperhero(String searchTerm) {
+
+        ArrayList<Superhero> searchResult = new ArrayList<>();
+
         for (Superhero hero : heroDatabase) {
             if (hero.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResult.add(hero);
             }
         }
-        if (!searchResult.isEmpty())
-            for (Superhero hero : searchResult)
-                System.out.println(hero);
-        else
-            System.out.println("Couldn't find a match: " + "\n" + searchTerm + "\n");
-        return null;
-    }
-
-    public ArrayList<Superhero> getSearchResult(){
-    return searchResult;
-
+        return searchResult;
     }
 }
