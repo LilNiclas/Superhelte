@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Database {
 
 
+
     private ArrayList<Superhero> heroDatabase = new ArrayList<>();
 
 
@@ -30,4 +31,5 @@ public class Database {
         }
         return searchResult;
     }
+
 }

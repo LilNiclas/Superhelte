@@ -148,7 +148,7 @@ public class UserInterface {
 
             System.out.println("Superheroes");
             for (int i = 0; i < database.getHeroDatabase().size(); i++) {
-                System.out.println(i + 1 + ":" + database.getHeroDatabase().get(i));
+                System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
             }
 
             System.out.print("Enter the number for the superhero to be edited: ");

@@ -6,10 +6,10 @@ public class Superhero {
     private int introYear;
     private double strengthPoint;
 
-    public Superhero(String name, String superpower, boolean menneske, int introYear, double strengthPoint) {
+    public Superhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
         this.name = name;
         this.superpower = superpower;
-        this.human = menneske;
+        this.human = human;
         this.introYear = introYear;
         this.strengthPoint = strengthPoint;
     }
