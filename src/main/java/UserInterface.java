@@ -16,6 +16,7 @@ public class UserInterface {
             System.out.println("3. Registered superheroes");
             System.out.println("5. Search for a superhero");
             System.out.println("7. Edit hero");
+            System.out.println("8. Delete hero");
             System.out.println("9. Exit program");
             System.out.println("-----------------------------");
 
@@ -31,6 +32,8 @@ public class UserInterface {
                     searchHero();
                 } else if (menue == 7) {
                     editHero();
+                } else if (menue == 8) {
+                    deleteHero();
                 } else if (menue == 9) {
                     System.out.println("Exiting program...");
                     System.exit(0);
@@ -160,24 +163,24 @@ public class UserInterface {
 
             System.out.println("Edit data press ENTER. Don't want to edit data press Enter");
             System.out.println("Name: " + editHero.getName());
-            String newName = scan.nextLine();
+            String newName = scan.nextLine().trim();
             if (!newName.isEmpty())
                 editHero.setName(newName);
 
             System.out.println("Superpower: " + editHero.getSuperpower());
-            String newSuperpower = scan.nextLine();
+            String newSuperpower = scan.nextLine().trim();
             if (!newSuperpower.isEmpty())
                 editHero.setSuperpower(newSuperpower);
 
             System.out.println("Human: " + editHero.isHuman());
-            String newHuman = scan.nextLine();
+            String newHuman = scan.nextLine().trim();
             if (!newHuman.isEmpty())
                 editHero.setHuman(Boolean.parseBoolean(newHuman));
 
 
             System.out.println("Introduction year: " + editHero.getIntroYear());
             do {
-                String newIntroYear = scan.nextLine();
+                String newIntroYear = scan.nextLine().trim();
                 if (!newIntroYear.isEmpty()) {
                     try {
                         editHero.setIntroYear(Integer.parseInt(newIntroYear));
@@ -194,7 +197,7 @@ public class UserInterface {
 
             System.out.println("Strength points: " + editHero.getStrengthPoint());
             do {
-                String newStrengthpoint = scan.nextLine();
+                String newStrengthpoint = scan.nextLine().trim();
                 if (!newStrengthpoint.isEmpty()) {
 
                     try {
@@ -207,6 +210,30 @@ public class UserInterface {
                     }
                 }
             } while (writingError == true);
+        }
+    }
+
+    public void deleteHero() {
+        if (menue == 8) {
+
+            System.out.println("Delete superhero");
+            for (int i = 0; i < database.getHeroDatabase().size(); i++) {
+                System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
+            }
+
+            System.out.print("Enter the number for the superhero to be deleted: ");
+            int number = scan.nextInt();
+            scan.nextLine();
+
+            Superhero deleteHero = database.getHeroDatabase().get(number - 1);
+            System.out.println("Are you sure you want to delete the hero? (True/false)");
+            boolean delete = scan.nextBoolean();
+            if (true) {
+                System.out.println("Your hero wil be removed");
+                database.deleteSuperhero(deleteHero);
+            } else if (false) {
+                System.out.println("No hero was removed");
+            }
         }
     }
 }

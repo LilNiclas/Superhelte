@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class Database {
 
-
-
     private ArrayList<Superhero> heroDatabase = new ArrayList<>();
 
 
@@ -25,11 +23,16 @@ public class Database {
         ArrayList<Superhero> searchResult = new ArrayList<>();
 
         for (Superhero hero : heroDatabase) {
-            if (hero.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+            if (hero.getName().toLowerCase().contains(searchTerm.toLowerCase().trim())) {
                 searchResult.add(hero);
             }
         }
         return searchResult;
     }
 
+
+    public boolean deleteSuperhero (Superhero superhero) {
+        boolean succes = heroDatabase.remove(superhero);
+        return succes;
+    }
 }
