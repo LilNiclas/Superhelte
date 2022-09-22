@@ -31,7 +31,7 @@ public class Database {
     }
 
 
-    public boolean deleteSuperhero (Superhero superhero) {
+    public boolean deleteSuperhero(Superhero superhero) {
         boolean succes = heroDatabase.remove(superhero);
         return succes;
     }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -8,17 +9,18 @@ public class UserInterface {
     int count = 1;
     int menue = 0;
 
+
     public void userStart() {
         boolean writingError = false;
         do {
-            System.out.println("Welcome to MySuperheroList");
-            System.out.println("1. Create a superhero");
-            System.out.println("3. Registered superheroes");
-            System.out.println("5. Search for a superhero");
-            System.out.println("7. Edit hero");
-            System.out.println("8. Delete hero");
-            System.out.println("9. Exit program");
-            System.out.println("-----------------------------");
+            System.out.println("\u001B[1mWelcome to MySuperheroList\u001B[0m");
+            System.out.println("\u001B[1m1.\u001B[0m Create a superhero");
+            System.out.println("\u001B[1m2.\u001B[0m Registered superheroes");
+            System.out.println("\u001B[1m3.\u001B[0m Search for a superhero");
+            System.out.println("\u001B[1m4.\u001B[0m Edit hero");
+            System.out.println("\u001B[1m5.\u001B[0m Delete hero");
+            System.out.println("\u001B[1m9.\u001B[0m Exit program");
+            System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
             try {
                 menue = scan.nextInt();
@@ -26,21 +28,20 @@ public class UserInterface {
 
                 if (menue == 1) {
                     createHero();
+                } else if (menue == 2) {
+                    registeredHero();
                 } else if (menue == 3) {
-                    registerHero();
-                } else if (menue == 5) {
                     searchHero();
-                } else if (menue == 7) {
+                } else if (menue == 4) {
                     editHero();
-                } else if (menue == 8) {
+                } else if (menue == 5) {
                     deleteHero();
                 } else if (menue == 9) {
-                    System.out.println("Exiting program...");
+                    System.out.println("\u001B[1mExiting program...\u001B[0m");
                     System.exit(0);
                 }
             } catch (InputMismatchException ime) {
-                System.out.println("An eroor occurred");
-                System.out.println("Write in numbers");
+                System.out.println("\u001B[4mWriting error, write a number shown on screen\u001B[0m");
                 scan.nextLine();
                 writingError = true;
             }
@@ -51,25 +52,31 @@ public class UserInterface {
         boolean writingError = false;
         if (menue == 1) {
 
-            System.out.println("Create a hero (" + count + ")");
+            System.out.println("\u001B[1mCreate a hero (" + count + ")\u001B[0m");
             count++;
-
             System.out.print("Superhero name: ");
             String name = scan.nextLine();
 
             System.out.print("Superpower: ");
             String superpower = scan.nextLine();
 
+
             System.out.print("Are they human: (y or n) ");
             boolean human = true;
-            char humanAnswer = scan.nextLine().charAt(0);
-            if (humanAnswer == 'n') {
-                human = false;
-            } else if (humanAnswer == 'y') {
-                human = true;
-            } else {
-                System.out.println("Invalid input");
-            }
+            char humanAnswer;
+            do {
+                humanAnswer = scan.nextLine().charAt(0);
+                if (humanAnswer == 'n') {
+                    human = false;
+                    break;
+                } else if (humanAnswer == 'y') {
+                    human = true;
+                    break;
+                } else {
+                    System.out.println("\u001B[4mWriting error, type y or n\u001B[0m");
+                }
+            } while (humanAnswer != 'y' || humanAnswer != 'n');
+
 
             System.out.print("Introduction year: ");
             int introYear = 0;
@@ -80,7 +87,7 @@ public class UserInterface {
                     writingError = false;
 
                 } catch (InputMismatchException nfe) {
-                    System.out.println("Writing error, try writing in intergers");
+                    System.out.println("\u001B[4mWriting error, write in intergers\u001B[0m");
                     scan.nextLine();
                     writingError = true;
 
@@ -97,7 +104,7 @@ public class UserInterface {
                     System.out.println(" ");
                     writingError = false;
                 } catch (InputMismatchException nfe) {
-                    System.out.println("Writing error, try writing in numbers");
+                    System.out.println("\u001B[4mWriting error, try writing in numbers\u001B[0m");
                     scan.nextLine();
                     writingError = true;
 
@@ -108,38 +115,53 @@ public class UserInterface {
         }
     }
 
-    public void registerHero() {
-        if (menue == 3) {
-            for (Superhero hero : database.getHeroDatabase()) {
+    public void registeredHero() {
+        if (menue == 2) {
+            System.out.println("\u001B[1mRegistered heroes\u001B[0m");
 
-                System.out.println("Superhero name: " + hero.getName());
-                System.out.println("Superpower: " + hero.getSuperpower());
-                System.out.println("Are they human: " + hero.isHuman()); //TODO: print "yes/no" ikke true/false. Ugyldigt input bliver også til true
-                System.out.println("Introduction year: " + hero.getIntroYear());
-                System.out.println("Strength points: " + hero.getStrengthPoint());
-                System.out.println("\n");
+            if (database.getHeroDatabase().isEmpty()) {
+                System.out.println("\u001B[4mNo superheroes were found\u001B[0m");
+                System.out.println("");
+            } else {
+                for (Superhero hero : database.getHeroDatabase()) {
+                    System.out.println("Superhero name: " + hero.getName());
+                    System.out.println("Superpower: " + hero.getSuperpower());
+                    if (hero.isHuman() == true)
+                        System.out.println("Are they human: Yes");
+                    else
+                        System.out.println("Are they human: No");
+                    System.out.println("Introduction year: " + hero.getIntroYear());
+                    System.out.println("Strength points: " + hero.getStrengthPoint());
+                    System.out.println("");
+                }
             }
         }
     }
 
     public void searchHero() {
-        if (menue == 5) {
+        if (menue == 3) {
+            System.out.println("\u001B[1mSearch for a superhero\u001B[0m");
             System.out.print("Enter a characteristic about a hero: ");
             String searchTerm = scan.nextLine();
+            System.out.println("");
 
             ArrayList<Superhero> searchResult = database.searchSuperhero(searchTerm);
 
             if (searchResult.isEmpty()) {
-                System.out.println("No superheroes were found");
+                System.out.println("\u001B[4mNo superheroes were found\u001B[0m");
+                System.out.println("");
             } else {
                 System.out.println("Superheroes found");
                 for (Superhero hero : searchResult) {
                     System.out.println("Superhero name: " + hero.getName());
                     System.out.println("Superpower: " + hero.getSuperpower());
-                    System.out.println("Are they human: " + hero.isHuman());
+                    if (hero.isHuman() == true)
+                        System.out.println("Are they human: Yes");
+                    else
+                        System.out.println("Are they human: No");
                     System.out.println("Introduction year: " + hero.getIntroYear());
                     System.out.println("Strength points: " + hero.getStrengthPoint());
-                    System.out.println("\n");
+                    System.out.println("");
                 }
             }
         }
@@ -147,93 +169,99 @@ public class UserInterface {
 
     public void editHero() {
         boolean writingError = false;
-        if (menue == 7) {
-
-            System.out.println("Superheroes");
-            for (int i = 0; i < database.getHeroDatabase().size(); i++) {
-                System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
-            }
-
-            System.out.print("Enter the number for the superhero to be edited: ");
-            int number = scan.nextInt();
-            scan.nextLine();
-
-            Superhero editHero = database.getHeroDatabase().get(number - 1);
-            System.out.println("Edit superhero's information: " + editHero);
-
-            System.out.println("Edit data press ENTER. Don't want to edit data press Enter");
-            System.out.println("Name: " + editHero.getName());
-            String newName = scan.nextLine().trim();
-            if (!newName.isEmpty())
-                editHero.setName(newName);
-
-            System.out.println("Superpower: " + editHero.getSuperpower());
-            String newSuperpower = scan.nextLine().trim();
-            if (!newSuperpower.isEmpty())
-                editHero.setSuperpower(newSuperpower);
-
-            System.out.println("Human: " + editHero.isHuman());
-            String newHuman = scan.nextLine().trim();
-            if (!newHuman.isEmpty())
-                editHero.setHuman(Boolean.parseBoolean(newHuman));
-
-
-            System.out.println("Introduction year: " + editHero.getIntroYear());
+        int number;
+        if (menue == 4) {
             do {
-                String newIntroYear = scan.nextLine().trim();
-                if (!newIntroYear.isEmpty()) {
-                    try {
-                        editHero.setIntroYear(Integer.parseInt(newIntroYear));
-                        writingError = false;
+                System.out.println("\u001B[1mEdit superhero\u001B[0m");
+                for (int i = 0; i < database.getHeroDatabase().size(); i++)
+                    System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
 
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("An error occurred");
-                        System.out.println("Enter the introduction year in numbers");
-                        writingError = true;
-                    }
-                }
-            } while (writingError == true);
+                System.out.print("\u001B[1mEnter the number for the superhero to be edited: \u001B[0m");
+                number = scan.nextInt();
+                scan.nextLine();
 
 
-            System.out.println("Strength points: " + editHero.getStrengthPoint());
-            do {
-                String newStrengthpoint = scan.nextLine().trim();
-                if (!newStrengthpoint.isEmpty()) {
+                if (number <= database.getHeroDatabase().size()) {
 
-                    try {
-                        editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
-                        writingError = false;
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("An error occurred");
-                        System.out.println("Enter strenght points in numbers");
-                        writingError = true;
-                    }
-                }
-            } while (writingError == true);
+                    Superhero editHero = database.getHeroDatabase().get(number - 1);
+                    System.out.println("Edit superhero's information: " + editHero);
+
+                    System.out.println("Edit data press ENTER. Don't want to edit data press Enter");
+                    System.out.println("Name: " + editHero.getName());
+                    String newName = scan.nextLine().trim();
+                    if (!newName.isEmpty())
+                        editHero.setName(newName);
+
+                    System.out.println("Superpower: " + editHero.getSuperpower());
+                    String newSuperpower = scan.nextLine().trim();
+                    if (!newSuperpower.isEmpty())
+                        editHero.setSuperpower(newSuperpower);
+
+                    if (editHero.isHuman() == true)
+                        System.out.println("Human (type true/no): Yes");
+                    else
+                        System.out.println("Human (type true/no): No");
+                    String newHuman = scan.nextLine().trim();
+                    if (!newHuman.isEmpty())
+                        editHero.setHuman(Boolean.parseBoolean(newHuman));
+
+                    System.out.println("Introduction year: " + editHero.getIntroYear());
+                    do {
+                        String newIntroYear = scan.nextLine().trim();
+                        if (!newIntroYear.isEmpty()) {
+                            try {
+                                editHero.setIntroYear(Integer.parseInt(newIntroYear));
+                                writingError = false;
+
+                            } catch (NumberFormatException nfe) {
+                                System.out.println("\u001B[4mAn error occurred\u001B[0m");
+                                System.out.println("Enter the introduction year in numbers");
+                                writingError = true;
+                            }
+                        }
+                    } while (writingError == true);
+
+                    System.out.println("Strength points: " + editHero.getStrengthPoint());
+                    do {
+                        String newStrengthpoint = scan.nextLine().trim();
+                        if (!newStrengthpoint.isEmpty()) {
+                            try {
+                                editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
+                                writingError = false;
+                            } catch (NumberFormatException nfe) {
+                                System.out.println("\u001B[m4An error occurred\u001B[0m");
+                                System.out.println("Enter strenght points in numbers");
+                                writingError = true;
+                            }
+                        }
+                    } while (writingError == true);
+                    System.out.println("");
+
+                } else
+                    System.out.println("\u001B[4mWriting error, the number isn't set to a hero\u001B[0m");
+
+            } while (number > database.getHeroDatabase().size());
         }
     }
 
     public void deleteHero() {
-        if (menue == 8) {
-
-            System.out.println("Delete superhero");
-            for (int i = 0; i < database.getHeroDatabase().size(); i++) {
+        boolean deleteHeroes = false;
+        if (menue == 5) {
+            System.out.println("\u001B[1mDelete superhero\u001B[0m");
+            for (int i = 0; i < database.getHeroDatabase().size(); i++)
                 System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
-            }
+
 
             System.out.print("Enter the number for the superhero to be deleted: ");
             int number = scan.nextInt();
             scan.nextLine();
 
             Superhero deleteHero = database.getHeroDatabase().get(number - 1);
-            System.out.println("Are you sure you want to delete the hero? (True/false)");
-            boolean delete = scan.nextBoolean();
-            if (true) {
-                System.out.println("Your hero wil be removed");
-                database.deleteSuperhero(deleteHero);
-            } else if (false) {
-                System.out.println("No hero was removed");
-            }
+            database.deleteSuperhero(deleteHero);
+            System.out.println("\u001B[1mHero has been deleted\u001B[0m");
+            System.out.println("");
+
         }
     }
 }
+

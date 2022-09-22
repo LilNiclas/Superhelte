@@ -78,7 +78,7 @@ public class DatabaseTest {
     }
 
     @Test
-    public void deleteSuperhero(){
+    public void deleteSuperhero() {
 
         database.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
         database.createSuperhero("Batman", "Money", true, 1978, 12);
@@ -90,7 +90,7 @@ public class DatabaseTest {
         boolean actualResult = database.deleteSuperhero(superhero);
         boolean expectedResult = true;
 
-        assertEquals(expectedResult ,actualResult);
+        assertEquals(expectedResult, actualResult);
 
         ArrayList<Superhero> resultAfterDelete = database.getHeroDatabase();
         int actualSize = resultAfterDelete.size();
