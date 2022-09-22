@@ -72,9 +72,9 @@ public class UserInterface {
                 } else if (humanAnswer == 'y') {
                     human = true;
                     break;
-                } else {
+                } else
                     System.out.println("\u001B[4mWriting error, type y or n\u001B[0m");
-                }
+
             } while (humanAnswer != 'y' || humanAnswer != 'n');
 
 
@@ -151,7 +151,7 @@ public class UserInterface {
                 System.out.println("\u001B[4mNo superheroes were found\u001B[0m");
                 System.out.println("");
             } else {
-                System.out.println("Superheroes found");
+                System.out.println("\u001B[1mSuperheroes found\u001B[0m");
                 for (Superhero hero : searchResult) {
                     System.out.println("Superhero name: " + hero.getName());
                     System.out.println("Superpower: " + hero.getSuperpower());
@@ -197,13 +197,17 @@ public class UserInterface {
                     if (!newSuperpower.isEmpty())
                         editHero.setSuperpower(newSuperpower);
 
+
                     if (editHero.isHuman() == true)
-                        System.out.println("Human (type true/no): Yes");
+                        System.out.println("Human (type true/false): Yes");
                     else
-                        System.out.println("Human (type true/no): No");
+                        System.out.println("Human (type true/false): No");
                     String newHuman = scan.nextLine().trim();
                     if (!newHuman.isEmpty())
                         editHero.setHuman(Boolean.parseBoolean(newHuman));
+                    else
+                        System.out.println("\u001B[4mInvalid input\u001B[0m");
+
 
                     System.out.println("Introduction year: " + editHero.getIntroYear());
                     do {
@@ -214,12 +218,12 @@ public class UserInterface {
                                 writingError = false;
 
                             } catch (NumberFormatException nfe) {
-                                System.out.println("\u001B[4mAn error occurred\u001B[0m");
-                                System.out.println("Enter the introduction year in numbers");
+                                System.out.println("\u001B[4mWriting error, type in numbers\u001B[0m");
                                 writingError = true;
                             }
                         }
                     } while (writingError == true);
+
 
                     System.out.println("Strength points: " + editHero.getStrengthPoint());
                     do {
@@ -229,16 +233,16 @@ public class UserInterface {
                                 editHero.setStrengthPoint(Double.parseDouble(newStrengthpoint));
                                 writingError = false;
                             } catch (NumberFormatException nfe) {
-                                System.out.println("\u001B[m4An error occurred\u001B[0m");
-                                System.out.println("Enter strenght points in numbers");
+                                System.out.println("\u001B[4mWriting error, type in numbers\u001B[0m");
                                 writingError = true;
                             }
                         }
                     } while (writingError == true);
                     System.out.println("");
 
+
                 } else
-                    System.out.println("\u001B[4mWriting error, the number isn't set to a hero\u001B[0m");
+                    System.out.println("\u001B[4mWriting error, the number isn't set to a hero\u001B[0m\n");
 
             } while (number > database.getHeroDatabase().size());
         }
