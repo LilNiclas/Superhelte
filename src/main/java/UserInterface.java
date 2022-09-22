@@ -174,7 +174,7 @@ public class UserInterface {
             do {
                 System.out.println("\u001B[1mEdit superhero\u001B[0m");
                 for (int i = 0; i < database.getHeroDatabase().size(); i++)
-                    System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
+                    System.out.println(i + 1 + ". " + database.getHeroDatabase().get(i));
 
                 System.out.print("\u001B[1mEnter the number for the superhero to be edited: \u001B[0m");
                 number = scan.nextInt();
