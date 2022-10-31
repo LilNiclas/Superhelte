@@ -11,8 +11,8 @@ public class Controller {
         return database.getHeroDatabase();
     }
 
-    public ArrayList<Superhero> searchSuperhero(String searchterm){
-        return database.searchSuperhero(searchterm);
+    public ArrayList<Superhero> searchSuperhero(String searchTerm){
+        return database.searchSuperhero(searchTerm);
     }
 
     public boolean deleteSuperhero(Superhero superhero) {

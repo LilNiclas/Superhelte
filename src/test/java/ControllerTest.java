@@ -7,13 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ControllerTest {
 
-    //Ændre alt til Controller og ikke database. sikre det virker.
-
-    private Database database;
+    private Controller controller;
 
     @BeforeEach
     void prepareTest() {
-        database = new Database();
+        controller = new Controller();
     }
 
     @Test
@@ -22,10 +20,10 @@ public class ControllerTest {
         int expected = 2;
 
         //Act
-        database.createSuperhero("Spiderman", "spider sense", true, 1945, 15);
-        database.createSuperhero("Batman", "Money", true, 1978, 12);
+        controller.createSuperhero("Spiderman", "spider sense", true, 1945, 15);
+        controller.createSuperhero("Batman", "Money", true, 1978, 12);
 
-        ArrayList<Superhero> result = database.getHeroDatabase();
+        ArrayList<Superhero> result = controller.getHeroDatabase();
         int actual = result.size();
         //Assert
         assertEquals(expected, actual);
@@ -38,11 +36,11 @@ public class ControllerTest {
         String search = "man";
 
         //Act
-        database.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
-        database.createSuperhero("Batman", "Money", true, 1978, 12);
-        database.createSuperhero("Superman", "Laser", false, 1938, 50);
+        controller.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
+        controller.createSuperhero("Batman", "Money", true, 1978, 12);
+        controller.createSuperhero("Superman", "Laser", false, 1938, 50);
 
-        ArrayList<Superhero> searchResult = database.searchSuperhero(search);
+        ArrayList<Superhero> searchResult = controller.searchSuperhero(search);
         int actual = searchResult.size();
 
         //Assert
@@ -56,11 +54,11 @@ public class ControllerTest {
         String search = "Black Panther";
 
         //Act
-        database.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
-        database.createSuperhero("Batman", "Money", true, 1978, 12);
-        database.createSuperhero("Superman", "Laser", false, 1938, 50);
+        controller.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
+        controller.createSuperhero("Batman", "Money", true, 1978, 12);
+        controller.createSuperhero("Superman", "Laser", false, 1938, 50);
 
-        ArrayList<Superhero> searchResult = database.searchSuperhero(search);
+        ArrayList<Superhero> searchResult = controller.searchSuperhero(search);
         int actual = searchResult.size();
 
         //Assert
@@ -70,8 +68,8 @@ public class ControllerTest {
     @Test
     public void searchForCase() {
 
-        database.createSuperhero("Superman", "Laser", false, 1938, 50);
-        ArrayList<Superhero> searchResult = database.searchSuperhero("sUperMan");
+        controller.createSuperhero("Superman", "Laser", false, 1938, 50);
+        ArrayList<Superhero> searchResult = controller.searchSuperhero("sUperMan");
 
         int actual = searchResult.size();
         int expected = 1;
@@ -82,19 +80,19 @@ public class ControllerTest {
     @Test
     public void deleteSuperhero() {
 
-        database.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
-        database.createSuperhero("Batman", "Money", true, 1978, 12);
-        database.createSuperhero("Superman", "Laser", false, 1938, 50);
-        ArrayList<Superhero> searchResult = database.getHeroDatabase();
+        controller.createSuperhero("Spiderman", "Spider sense", true, 1945, 15);
+        controller.createSuperhero("Batman", "Money", true, 1978, 12);
+        controller.createSuperhero("Superman", "Laser", false, 1938, 50);
+        ArrayList<Superhero> searchResult = controller.getHeroDatabase();
         Superhero superhero = searchResult.get(0);
         int expectedSize = searchResult.size() - 1;
 
-        boolean actualResult = database.deleteSuperhero(superhero);
+        boolean actualResult = controller.deleteSuperhero(superhero);
         boolean expectedResult = true;
 
         assertEquals(expectedResult, actualResult);
 
-        ArrayList<Superhero> resultAfterDelete = database.getHeroDatabase();
+        ArrayList<Superhero> resultAfterDelete = controller.getHeroDatabase();
         int actualSize = resultAfterDelete.size();
 
         assertEquals(expectedSize, actualSize);
