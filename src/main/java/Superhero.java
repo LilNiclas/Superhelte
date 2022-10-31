@@ -1,14 +1,14 @@
 public class Superhero {
 
     private String name;
-    private String superpower;
+    private String superPower;
     private boolean human;
     private int introYear;
     private double strengthPoint;
 
-    public Superhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
+    public Superhero(String name, String superPower, boolean human, int introYear, double strengthPoint) {
         this.name = name;
-        this.superpower = superpower;
+        this.superPower = superPower;
         this.human = human;
         this.introYear = introYear;
         this.strengthPoint = strengthPoint;
@@ -22,10 +22,10 @@ public class Superhero {
     }
 
     public String getSuperpower() {
-        return superpower;
+        return superPower;
     }
     public void setSuperpower(String superpower) {
-        this.superpower = superpower;
+        this.superPower = superpower;
     }
 
     public boolean isHuman() {
@@ -50,7 +50,7 @@ public class Superhero {
     }
 
     public String toString() {
-        return ("\nName: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
+        return ("\nName: " + name + "\n" + "Superpower: " + superPower + "\n" + "Human: " + human
                 + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint + " \n ");
     }
 }

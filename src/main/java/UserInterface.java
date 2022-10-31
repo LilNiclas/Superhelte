@@ -4,11 +4,12 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class UserInterface {
-    Database database = new Database();
+
+    //Database database = new Database();
+    Controller controller = new Controller();
     Scanner scan = new Scanner(System.in);
     int count = 1;
-    int menue = 0;
-
+    int menu = 0;
 
     public void userStart() {
         boolean writingError = false;
@@ -23,20 +24,20 @@ public class UserInterface {
             System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
             try {
-                menue = scan.nextInt();
+                menu = scan.nextInt();
                 scan.nextLine();
 
-                if (menue == 1) {
+                if (menu == 1) {
                     createHero();
-                } else if (menue == 2) {
+                } else if (menu == 2) {
                     registeredHero();
-                } else if (menue == 3) {
+                } else if (menu == 3) {
                     searchHero();
-                } else if (menue == 4) {
+                } else if (menu == 4) {
                     editHero();
-                } else if (menue == 5) {
+                } else if (menu == 5) {
                     deleteHero();
-                } else if (menue == 9) {
+                } else if (menu == 9) {
                     System.out.println("\u001B[1mExiting program...\u001B[0m");
                     System.exit(0);
                 }
@@ -45,12 +46,12 @@ public class UserInterface {
                 scan.nextLine();
                 writingError = true;
             }
-        } while (menue != 9 || writingError == true);
+        } while (menu != 9 || writingError == true);
     }
 
     public void createHero() {
         boolean writingError = false;
-        if (menue == 1) {
+        if (menu == 1) {
 
             System.out.println("\u001B[1mCreate a hero (" + count + ")\u001B[0m");
             count++;
@@ -111,19 +112,19 @@ public class UserInterface {
                 }
             } while (writingError == true);
 
-            database.createSuperhero(name, superpower, human, introYear, strengthPoint);
+            controller.createSuperhero(name, superpower, human, introYear, strengthPoint);
         }
     }
 
     public void registeredHero() {
-        if (menue == 2) {
+        if (menu == 2) {
             System.out.println("\u001B[1mRegistered heroes\u001B[0m");
 
-            if (database.getHeroDatabase().isEmpty()) {
+            if (controller.getHeroDatabase().isEmpty()) {
                 System.out.println("\u001B[4mNo superheroes were found\u001B[0m");
                 System.out.println("");
             } else {
-                for (Superhero hero : database.getHeroDatabase()) {
+                for (Superhero hero : controller.getHeroDatabase()) {
                     System.out.println("Superhero name: " + hero.getName());
                     System.out.println("Superpower: " + hero.getSuperpower());
                     if (hero.isHuman() == true)
@@ -139,13 +140,13 @@ public class UserInterface {
     }
 
     public void searchHero() {
-        if (menue == 3) {
+        if (menu == 3) {
             System.out.println("\u001B[1mSearch for a superhero\u001B[0m");
             System.out.print("Enter a characteristic about a hero: ");
             String searchTerm = scan.nextLine();
             System.out.println("");
 
-            ArrayList<Superhero> searchResult = database.searchSuperhero(searchTerm);
+            ArrayList<Superhero> searchResult = controller.searchSuperhero(searchTerm);
 
             if (searchResult.isEmpty()) {
                 System.out.println("\u001B[4mNo superheroes were found\u001B[0m");
@@ -170,23 +171,23 @@ public class UserInterface {
     public void editHero() {
         boolean writingError = false;
         int number;
-        if (menue == 4) {
+        if (menu == 4) {
             do {
                 System.out.println("\u001B[1mEdit superhero\u001B[0m");
-                for (int i = 0; i < database.getHeroDatabase().size(); i++)
-                    System.out.println(i + 1 + ". " + database.getHeroDatabase().get(i));
+                for (int i = 0; i < controller.getHeroDatabase().size(); i++)
+                    System.out.println(i + 1 + ". " + controller.getHeroDatabase().get(i));
 
                 System.out.print("\u001B[1mEnter the number for the superhero to be edited: \u001B[0m");
                 number = scan.nextInt();
                 scan.nextLine();
 
 
-                if (number <= database.getHeroDatabase().size()) {
+                if (number <= controller.getHeroDatabase().size()) {
 
-                    Superhero editHero = database.getHeroDatabase().get(number - 1);
+                    Superhero editHero = controller.getHeroDatabase().get(number - 1);
                     System.out.println("Edit superhero's information: " + editHero);
 
-                    System.out.println("Edit data press ENTER. Don't want to edit data press Enter");
+                    System.out.println("Edit data: Type and then press ENTER. Don't edit data: Press Enter");
                     System.out.println("Name: " + editHero.getName());
                     String newName = scan.nextLine().trim();
                     if (!newName.isEmpty())
@@ -242,26 +243,26 @@ public class UserInterface {
 
 
                 } else
-                    System.out.println("\u001B[4mWriting error, the number isn't set to a hero\u001B[0m\n");
+                    System.out.println("\u001B[4mWriting error, the character written isn't set to a hero\u001B[0m\n");
 
-            } while (number > database.getHeroDatabase().size());
+            } while (number > controller.getHeroDatabase().size());
         }
     }
 
     public void deleteHero() {
         boolean deleteHeroes = false;
-        if (menue == 5) {
+        if (menu == 5) {
             System.out.println("\u001B[1mDelete superhero\u001B[0m");
-            for (int i = 0; i < database.getHeroDatabase().size(); i++)
-                System.out.println(i + 1 + ": " + database.getHeroDatabase().get(i));
+            for (int i = 0; i < controller.getHeroDatabase().size(); i++)
+                System.out.println(i + 1 + ": " + controller.getHeroDatabase().get(i));
 
 
             System.out.print("Enter the number for the superhero to be deleted: ");
             int number = scan.nextInt();
             scan.nextLine();
 
-            Superhero deleteHero = database.getHeroDatabase().get(number - 1);
-            database.deleteSuperhero(deleteHero);
+            Superhero deleteHero = controller.getHeroDatabase().get(number - 1);
+            controller.deleteSuperhero(deleteHero);
             System.out.println("\u001B[1mHero has been deleted\u001B[0m");
             System.out.println("");
 
