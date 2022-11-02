@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -11,12 +12,23 @@ public class Controller {
         return database.getHeroDatabase();
     }
 
-    public ArrayList<Superhero> searchSuperhero(String searchTerm){
+    public ArrayList<Superhero> searchSuperhero(String searchTerm) {
         return database.searchSuperhero(searchTerm);
     }
 
     public boolean deleteSuperhero(Superhero superhero) {
         return database.deleteSuperhero(superhero);
+    }
+
+
+    public void saveData() {
+        FileHandler fileHandler = new FileHandler();
+
+        try {
+            fileHandler.saveData(database.getHeroDatabase());
+        } catch (FileNotFoundException e) {
+            //throw new RuntimeException();
+        }
     }
 
 }

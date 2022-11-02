@@ -20,6 +20,7 @@ public class UserInterface {
             System.out.println("\u001B[1m3.\u001B[0m Search for a superhero");
             System.out.println("\u001B[1m4.\u001B[0m Edit hero");
             System.out.println("\u001B[1m5.\u001B[0m Delete hero");
+            System.out.println("\u001B[1m6.\u001B[0m Save Heroes");
             System.out.println("\u001B[1m9.\u001B[0m Exit program");
             System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
@@ -37,6 +38,8 @@ public class UserInterface {
                     editHero();
                 } else if (menu == 5) {
                     deleteHero();
+                } else if(menu==6) {
+                    saveData();
                 } else if (menu == 9) {
                     System.out.println("\u001B[1mExiting program...\u001B[0m");
                     System.exit(0);
@@ -268,5 +271,12 @@ public class UserInterface {
 
         }
     }
+
+    public void saveData() {
+        controller.saveData();
+        System.out.println("The data have been saved");
+
+    }
+
 }
 
