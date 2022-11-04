@@ -6,6 +6,8 @@ public class Superhero {
     private int introYear;
     private double strengthPoint;
 
+    public Superhero (){
+    }
     public Superhero(String name, String superPower, boolean human, int introYear, double strengthPoint) {
         this.name = name;
         this.superPower = superPower;
