@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public class Controller {
     private Database database = new Database();
+    FileHandler fileHandler = new FileHandler();
+
 
     public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
         database.createSuperhero(name, superpower, human, introYear, strengthPoint);
@@ -22,13 +24,17 @@ public class Controller {
 
 
     public void saveData() {
-        FileHandler fileHandler = new FileHandler();
-
         try {
             fileHandler.saveData(database.getHeroDatabase());
         } catch (FileNotFoundException e) {
-            //throw new RuntimeException();
         }
     }
 
+    public void loadData() {
+        try {
+            ArrayList<Superhero> superheroes = fileHandler.loadData();
+            database.addAll(superheroes);
+        } catch (FileNotFoundException e) {
+        }
+    }
 }

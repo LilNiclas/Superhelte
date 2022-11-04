@@ -34,4 +34,8 @@ public class Database {
         boolean succes = heroDatabase.remove(superhero);
         return succes;
     }
+
+    public void addAll(ArrayList<Superhero> superheroes) {
+        heroDatabase.addAll(superheroes);
+    }
 }
