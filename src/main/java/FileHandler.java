@@ -33,8 +33,6 @@ public class FileHandler {
 
         ArrayList<Superhero> superheroes = new ArrayList<>();
 
-        reader.nextLine();
-
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             System.out.println(line);
@@ -61,7 +59,6 @@ public class FileHandler {
 
         return infoSuper;
     }
-
     /*public void loadData(ArrayList<Superhero> superheroes) throws FileNotFoundException {
         superheroes.clear();
 
@@ -75,6 +72,5 @@ public class FileHandler {
             }
     }
         */
-
 }
 
