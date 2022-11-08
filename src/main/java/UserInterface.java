@@ -13,6 +13,7 @@ public class UserInterface {
     int menu = 0;
 
     public void userStart() {
+        System.out.println("Bob");
         boolean writingError = false;
         do {
             System.out.println("\u001B[1mWelcome to MySuperheroList\u001B[0m");
