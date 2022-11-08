@@ -13,7 +13,7 @@ public class Main {
         ui.userStart();
 
         /*
-        int [] tal = {6,3,7,5,9};
+        int [] tal = {6,3,7,5,9}; 
         Arrays.sort(tal);
         System.out.println(Arrays.toString(tal));
         Superhero s1 = new Superhero("Hans","Flot",false, 2000,2.5);
