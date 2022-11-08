@@ -3,7 +3,7 @@ package Superhero;
 public class Superhero{
 
     private String name;
-    private String superPower;
+    private String superpower;
     private boolean human;
     private int introYear;
     private double strengthPoint;
@@ -12,7 +12,7 @@ public class Superhero{
     }
     public Superhero(String name, String superPower, boolean human, int introYear, double strengthPoint) {
         this.name = name;
-        this.superPower = superPower;
+        this.superpower = superPower;
         this.human = human;
         this.introYear = introYear;
         this.strengthPoint = strengthPoint;
@@ -26,10 +26,10 @@ public class Superhero{
     }
 
     public String getSuperpower() {
-        return superPower;
+        return superpower;
     }
     public void setSuperpower(String superpower) {
-        this.superPower = superpower;
+        this.superpower = superpower;
     }
 
     public boolean isHuman() {
@@ -54,7 +54,7 @@ public class Superhero{
     }
 
     public String toString() {
-        return ("\nName: " + name + "\n" + "Superpower: " + superPower + "\n" + "Human: " + human
+        return ("\nName: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
                 + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint + " \n ");
     }
 }

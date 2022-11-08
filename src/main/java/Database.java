@@ -7,6 +7,7 @@ import java.util.Collections;
 
 public class Database {
 
+
     private ArrayList<Superhero> heroDatabase = new ArrayList<>();
 
     Superhero superhero = new Superhero();
