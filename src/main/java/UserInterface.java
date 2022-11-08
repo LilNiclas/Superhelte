@@ -6,15 +6,13 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    //Database database = new Database();
     Controller controller = new Controller();
     Scanner scan = new Scanner(System.in);
     int count = 1;
     int menu = 0;
 
     public void userStart() {
-        System.out.println("Bob");
-        System.out.println("Bo");
+        controller.createTestData();
         boolean writingError = false;
         do {
             System.out.println("\u001B[1mWelcome to MySuperheroList\u001B[0m");
@@ -25,6 +23,7 @@ public class UserInterface {
             System.out.println("\u001B[1m5.\u001B[0m Delete hero");
             System.out.println("\u001B[1m6.\u001B[0m Save Heroes");
             System.out.println("\u001B[1m7.\u001B[0m Load Heroes");
+            System.out.println("\u001B[1m8.\u001B[0m Sort Heroes");
             System.out.println("\u001B[1m9.\u001B[0m Exit program");
             System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
@@ -46,6 +45,8 @@ public class UserInterface {
                     saveData();
                 } else if (menu == 7) {
                     loadData();
+                } else if (menu == 8) {
+                    sortData();
                 } else if (menu == 9) {
                     System.out.println("\u001B[1mExiting program...\u001B[0m");
                     System.exit(0);
@@ -289,5 +290,59 @@ public class UserInterface {
         System.out.println("Data loaded");
     }
 
+    public void sortData() {
+        int menu1 = 0;
+        do {
+            System.out.println("\u001B[1m1.\u001B[0m Sort by a specific primary data");
+            System.out.println("\u001B[1m2.\u001B[0m Sort by a primary data and secondary data as strengthpoints");
+            System.out.println("\u001B[1m3.\u001B[0m Go back");
+            System.out.println("\u001B[1m-----------------------------\u001B[0m");
+
+            menu = scan.nextInt();
+            if (menu == 1) {
+                System.out.println("\u001B[1m1.\u001B[0m Sort by name");
+                System.out.println("\u001B[1m2.\u001B[0m Sort by superpowers ");
+                System.out.println("\u001B[1m3.\u001B[0m Sort by humanstatus");
+                System.out.println("\u001B[1m4.\u001B[0m Sort by introyear");
+                System.out.println("\u001B[1m5.\u001B[0m Sort by strength");
+                System.out.println("\u001B[1m6.\u001B[0m Go back");
+                System.out.println("\u001B[1m-----------------------------\u001B[0m");
+
+                menu1 = scan.nextInt();
+                if (menu1 == 1) {
+                    controller.getSortedDataByName();
+                } else if (menu1 == 2) {
+                    controller.getSortedDataBySuperpowers();
+                } else if (menu1 == 3) {
+                    controller.getSortedDataByHuman();
+                } else if (menu1 == 4) {
+                    controller.getSortedDataByIntroYear();
+                } else if (menu1 == 5) {
+                    controller.getSortedDataByStrengthPoint();
+                }
+
+            } else if (menu == 2) {
+                System.out.println("\u001B[1m1.\u001B[0m Sort primary data by name and secondary by strengthpoints");
+                System.out.println("\u001B[1m2.\u001B[0m Sort primary data by superpower and secondary by strengthpoints");
+                System.out.println("\u001B[1m3.\u001B[0m Sort primary data by humanstatus and secondary by strengthpoints");
+                System.out.println("\u001B[1m4.\u001B[0m Sort primary data by introyear and secondary by strengthpoints");
+                System.out.println("\u001B[1m5.\u001B[0m Go back");
+                System.out.println("\u001B[1m-----------------------------\u001B[0m");
+
+                menu1 = scan.nextInt();
+                if (menu1 == 1) {
+                    controller.getSortedDataByNameAndStrengthPoints();
+                } else if (menu1 == 2) {
+                    controller.getSortedDataBySuperPowersAndStrengthPoints();
+                } else if (menu1 == 3) {
+                    controller.getSortedDataByHumanAndStrengthPoints();
+                } else if (menu1 == 4) {
+                    controller.getSortedDataByIntroYearAndStrengthPoints();
+                }
+
+            }
+
+        } while(menu >2&&menu1 >5);
+    }
 }
 

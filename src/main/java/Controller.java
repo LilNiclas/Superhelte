@@ -39,4 +39,44 @@ public class Controller {
         } catch (FileNotFoundException e) {
         }
     }
+
+    public void getSortedDataByName() {
+        database.sortDataByName();
+
+    }
+    public void getSortedDataByIntroYear(){
+        database.sortIntroYear();
+    }
+    public void getSortedDataByStrengthPoint(){
+        database.sortStrengthPoints();
+    }
+
+    public void getSortedDataBySuperpowers(){
+        database.sortSuperPowers();
+    }
+
+    public void getSortedDataByHuman(){
+        database.sortHuman();
+    }
+
+    public void createTestData() {
+        database.createTestData();
+    }
+
+    public void getSortedDataByNameAndStrengthPoints(){
+        database.sortDataByNameAndStrengthPoints();
+    }
+
+    public void getSortedDataByIntroYearAndStrengthPoints(){
+        database.sortDataByIntroyearAndStrengthPoints();
+    }
+    public void getSortedDataBySuperPowersAndStrengthPoints(){
+        database.sortDataBySuperpowersAndStrengthPoints();
+    }
+    public void getSortedDataByHumanAndStrengthPoints(){
+        database.sortDataByHumanAndStrengthPoints();
+    }
+
+
+
 }
