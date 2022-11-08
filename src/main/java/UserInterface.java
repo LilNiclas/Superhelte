@@ -1,6 +1,7 @@
+import Superhero.Superhero;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -61,7 +62,7 @@ public class UserInterface {
 
             System.out.println("\u001B[1mCreate a hero (" + count + ")\u001B[0m");
             count++;
-            System.out.print("Superhero name: ");
+            System.out.print("Superhero.Superhero name: ");
             String name = scan.nextLine();
 
             System.out.print("Superpower: ");
@@ -131,7 +132,7 @@ public class UserInterface {
                 System.out.println("");
             } else {
                 for (Superhero hero : controller.getHeroDatabase()) {
-                    System.out.println("Superhero name: " + hero.getName());
+                    System.out.println("Superhero.Superhero name: " + hero.getName());
                     System.out.println("Superpower: " + hero.getSuperpower());
                     if (hero.isHuman() == true)
                         System.out.println("Are they human: Yes");
@@ -160,7 +161,7 @@ public class UserInterface {
             } else {
                 System.out.println("\u001B[1mSuperheroes found\u001B[0m");
                 for (Superhero hero : searchResult) {
-                    System.out.println("Superhero name: " + hero.getName());
+                    System.out.println("Superhero.Superhero name: " + hero.getName());
                     System.out.println("Superpower: " + hero.getSuperpower());
                     if (hero.isHuman() == true)
                         System.out.println("Are they human: Yes");

@@ -1,3 +1,5 @@
+import Superhero.Superhero;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -59,12 +61,12 @@ public class FileHandler {
 
         return infoSuper;
     }
-    /*public void loadData(ArrayList<Superhero> superheroes) throws FileNotFoundException {
+    /*public void loadData(ArrayList<Superhero.Superhero> superheroes) throws FileNotFoundException {
         superheroes.clear();
 
         Scanner scan = new Scanner(new File("data/superheroes.csv"));
 
-        Superhero superhero = null;
+        Superhero.Superhero superhero = null;
         while (!superhero. && scan.hasNextLine()) {
             superheroes = scan.nextLine();
             if (!superhero.isBlank()) {

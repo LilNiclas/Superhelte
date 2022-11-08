@@ -1,3 +1,5 @@
+import Superhero.Superhero;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 

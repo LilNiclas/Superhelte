@@ -1,4 +1,6 @@
-public class Superhero {
+package Superhero;
+
+public class Superhero{
 
     private String name;
     private String superPower;
