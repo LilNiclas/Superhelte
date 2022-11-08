@@ -215,9 +215,13 @@ public class UserInterface {
                         System.out.println("Human (type true/false): No");
                     String newHuman = scan.nextLine().trim();
                     if (!newHuman.isEmpty())
-                        editHero.setHuman(Boolean.parseBoolean(newHuman));
+                        //while (newHuman.equals("Y") || newHuman.equals("y") || newHuman.equals("yes") || newHuman.equals("Yes")) {
+                            editHero.setHuman(Boolean.parseBoolean(newHuman));
+                        //}
                     else
                         System.out.println("\u001B[4mInvalid input\u001B[0m");
+
+
 
 
                     System.out.println("Introduction year: " + editHero.getIntroYear());
