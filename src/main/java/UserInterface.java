@@ -14,6 +14,7 @@ public class UserInterface {
 
     public void userStart() {
         System.out.println("Bob");
+        System.out.println("Bo");
         boolean writingError = false;
         do {
             System.out.println("\u001B[1mWelcome to MySuperheroList\u001B[0m");
