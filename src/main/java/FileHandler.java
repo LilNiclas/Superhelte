@@ -7,7 +7,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
+    Database database = null;
 
+    public void setDatabase(Database database) {
+        this.database = database;
+    }
+
+    public void Controller (Database isChangesMade){
+        this.database = isChangesMade;
+    }
 
     public void saveData(ArrayList<Superhero> superheroes) throws FileNotFoundException {
 

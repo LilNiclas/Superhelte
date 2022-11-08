@@ -8,6 +8,12 @@ public class Controller {
     private FileHandler fileHandler;
 
 
+    public Controller() {
+        this.database = new Database();
+        this.fileHandler = new FileHandler();
+        fileHandler.setDatabase(database);
+    }
+
     public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
         database.createSuperhero(name, superpower, human, introYear, strengthPoint);
     }

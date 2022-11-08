@@ -20,6 +20,7 @@ public class Database {
 
         Superhero hero = new Superhero(name, superpower, human, introYear, strengthPoint);
         heroDatabase.add(hero);
+        setChangesMade(true);
     }
 
     public ArrayList<Superhero> getHeroDatabase() {
@@ -40,6 +41,7 @@ public class Database {
 
     public boolean deleteSuperhero(Superhero superhero) {
         boolean succes = heroDatabase.remove(superhero);
+        setChangesMade(true);
         return succes;
 
     }
