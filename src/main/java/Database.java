@@ -6,6 +6,15 @@ public class Database {
 
     private ArrayList<Superhero> heroDatabase = new ArrayList<>();
 
+    private boolean changesMade = false;
+
+    public boolean isChangesMade() {
+        return changesMade;
+    }
+
+    public void setChangesMade(boolean changesMade) {
+        this.changesMade = changesMade;
+    }
 
     public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
 
@@ -13,11 +22,9 @@ public class Database {
         heroDatabase.add(hero);
     }
 
-
     public ArrayList<Superhero> getHeroDatabase() {
         return heroDatabase;
     }
-
 
     public ArrayList<Superhero> searchSuperhero(String searchTerm) {
 
@@ -31,13 +38,17 @@ public class Database {
         return searchResult;
     }
 
-
     public boolean deleteSuperhero(Superhero superhero) {
         boolean succes = heroDatabase.remove(superhero);
         return succes;
+
     }
 
     public void addAll(ArrayList<Superhero> superheroes) {
         heroDatabase.addAll(superheroes);
     }
+
+
+
+
 }

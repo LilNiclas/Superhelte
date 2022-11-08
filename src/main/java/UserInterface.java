@@ -197,13 +197,17 @@ public class UserInterface {
                     System.out.println("Edit data: Type and then press ENTER. Don't edit data: Press Enter");
                     System.out.println("Name: " + editHero.getName());
                     String newName = scan.nextLine().trim();
-                    if (!newName.isEmpty())
+                    if (!newName.isEmpty()) {
                         editHero.setName(newName);
+                        controller.setChangesMade(true);
+                    }
 
                     System.out.println("Superpower: " + editHero.getSuperpower());
                     String newSuperpower = scan.nextLine().trim();
-                    if (!newSuperpower.isEmpty())
+                    if (!newSuperpower.isEmpty()) {
                         editHero.setSuperpower(newSuperpower);
+                        controller.setChangesMade(true);
+                    }
 
 
                     if (editHero.isHuman() == true)
@@ -211,9 +215,10 @@ public class UserInterface {
                     else
                         System.out.println("Human (type true/false): No");
                     String newHuman = scan.nextLine().trim();
-                    if (!newHuman.isEmpty())
+                    if (!newHuman.isEmpty()) {
                         editHero.setHuman(Boolean.parseBoolean(newHuman));
-                    else
+                        controller.setChangesMade(true);
+                    } else
                         System.out.println("\u001B[4mInvalid input\u001B[0m");
 
 
@@ -224,6 +229,7 @@ public class UserInterface {
                             try {
                                 editHero.setIntroYear(Integer.parseInt(newIntroYear));
                                 writingError = false;
+
 
                             } catch (NumberFormatException nfe) {
                                 System.out.println("\u001B[4mWriting error, type in numbers\u001B[0m");
@@ -244,6 +250,7 @@ public class UserInterface {
                                 System.out.println("\u001B[4mWriting error, type in numbers\u001B[0m");
                                 writingError = true;
                             }
+                            controller.setChangesMade(true);
                         }
                     } while (writingError == true);
                     System.out.println("");
@@ -278,7 +285,6 @@ public class UserInterface {
 
     public void saveData() {
         controller.saveData();
-        System.out.println("The data have been saved");
 
     }
 
@@ -286,6 +292,4 @@ public class UserInterface {
         controller.loadData();
         System.out.println("Data loaded");
     }
-
 }
-

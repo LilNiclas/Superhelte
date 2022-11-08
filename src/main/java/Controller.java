@@ -4,8 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
-    private Database database = new Database();
-    FileHandler fileHandler = new FileHandler();
+    private Database database;
+    private FileHandler fileHandler;
 
 
     public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
@@ -24,7 +24,6 @@ public class Controller {
         return database.deleteSuperhero(superhero);
     }
 
-
     public void saveData() {
         try {
             fileHandler.saveData(database.getHeroDatabase());
@@ -39,4 +38,11 @@ public class Controller {
         } catch (FileNotFoundException e) {
         }
     }
+
+    public void setChangesMade(boolean changesMade) {
+        database.setChangesMade(true);
+    }
+
+
+
 }
