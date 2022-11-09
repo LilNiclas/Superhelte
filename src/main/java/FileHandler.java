@@ -7,30 +7,42 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
+    Database database = null;
 
+    public void setDatabase(Database database) {
+        this.database = database;
+    }
+
+    public void Controller (Database isChangesMade){
+        this.database = isChangesMade;
+    }
 
     public void saveData(ArrayList<Superhero> superheroes) throws FileNotFoundException {
 
-        PrintStream output = new PrintStream(new File("data/superheroes.csv"));
+        if (database.isChangesMade() == true) {
+            PrintStream output = new PrintStream(new File("data/superheroes.csv"));
 
-        for (Superhero hero : superheroes) {
-            output.print(hero.getName());
-            output.print(";");
-            output.print(hero.getSuperpower());
-            output.print(";");
-            output.print(hero.isHuman());
-            output.print(";");
-            output.print(hero.getIntroYear());
-            output.print(";");
-            output.print(hero.getStrengthPoint());
-            output.println();
+            for (Superhero hero : superheroes) {
+                output.print(hero.getName());
+                output.print(";");
+                output.print(hero.getSuperpower());
+                output.print(";");
+                output.print(hero.isHuman());
+                output.print(";");
+                output.print(hero.getIntroYear());
+                output.print(";");
+                output.print(hero.getStrengthPoint());
+                output.println();
+
+            }
+            output.flush();
+            output.close();
         }
-
-        output.flush();
-        output.close();
+        database.setChangesMade(false);
     }
 
     public ArrayList<Superhero> loadData() throws FileNotFoundException {
+
         Scanner reader = new Scanner(new File("data/superheroes.csv"));
 
         ArrayList<Superhero> superheroes = new ArrayList<>();
@@ -61,18 +73,4 @@ public class FileHandler {
 
         return infoSuper;
     }
-    /*public void loadData(ArrayList<Superhero.Superhero> superheroes) throws FileNotFoundException {
-        superheroes.clear();
-
-        Scanner scan = new Scanner(new File("data/superheroes.csv"));
-
-        Superhero.Superhero superhero = null;
-        while (!superhero. && scan.hasNextLine()) {
-            superheroes = scan.nextLine();
-            if (!superhero.isBlank()) {
-                superheroes.add(superhero);
-            }
-    }
-        */
 }
-

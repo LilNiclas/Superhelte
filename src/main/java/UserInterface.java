@@ -45,8 +45,6 @@ public class UserInterface {
                     saveData();
                 } else if (menu == 7) {
                     loadData();
-                } else if (menu == 8) {
-                    sortData();
                 } else if (menu == 9) {
                     System.out.println("\u001B[1mExiting program...\u001B[0m");
                     System.exit(0);
@@ -200,13 +198,17 @@ public class UserInterface {
                     System.out.println("Edit data: Type and then press ENTER. Don't edit data: Press Enter");
                     System.out.println("Name: " + editHero.getName());
                     String newName = scan.nextLine().trim();
-                    if (!newName.isEmpty())
+                    if (!newName.isEmpty()) {
                         editHero.setName(newName);
+                        controller.setChangesMade(true);
+                    }
 
                     System.out.println("Superpower: " + editHero.getSuperpower());
                     String newSuperpower = scan.nextLine().trim();
-                    if (!newSuperpower.isEmpty())
+                    if (!newSuperpower.isEmpty()) {
                         editHero.setSuperpower(newSuperpower);
+                        controller.setChangesMade(true);
+                    }
 
 
                     if (editHero.isHuman() == true)
@@ -214,14 +216,11 @@ public class UserInterface {
                     else
                         System.out.println("Human (type true/false): No");
                     String newHuman = scan.nextLine().trim();
-                    if (!newHuman.isEmpty())
-                        //while (newHuman.equals("Y") || newHuman.equals("y") || newHuman.equals("yes") || newHuman.equals("Yes")) {
-                            editHero.setHuman(Boolean.parseBoolean(newHuman));
-                        //}
-                    else
+                    if (!newHuman.isEmpty()) {
+                        editHero.setHuman(Boolean.parseBoolean(newHuman));
+                        controller.setChangesMade(true);
+                    } else
                         System.out.println("\u001B[4mInvalid input\u001B[0m");
-
-
 
 
                     System.out.println("Introduction year: " + editHero.getIntroYear());
@@ -251,6 +250,7 @@ public class UserInterface {
                                 System.out.println("\u001B[4mWriting error, type in numbers\u001B[0m");
                                 writingError = true;
                             }
+                            controller.setChangesMade(true);
                         }
                     } while (writingError == true);
                     System.out.println("");

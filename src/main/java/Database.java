@@ -1,22 +1,26 @@
-import Comparator.*;
 import Superhero.Superhero;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Database {
 
-
     private ArrayList<Superhero> heroDatabase = new ArrayList<>();
 
-    Superhero superhero = new Superhero();
+    private boolean changesMade = false;
+
+    public boolean isChangesMade() {
+        return changesMade;
+    }
+
+    public void setChangesMade(boolean changesMade) {
+        this.changesMade = changesMade;
+    }
 
     public void createSuperhero(String name, String superpower, boolean human, int introYear, double strengthPoint) {
 
         Superhero hero = new Superhero(name, superpower, human, introYear, strengthPoint);
         heroDatabase.add(hero);
+        setChangesMade(true);
     }
 
 
@@ -40,6 +44,7 @@ public class Database {
 
     public boolean deleteSuperhero(Superhero superhero) {
         boolean succes = heroDatabase.remove(superhero);
+        setChangesMade(true);
         return succes;
     }
 
