@@ -45,6 +45,8 @@ public class UserInterface {
                     saveData();
                 } else if (menu == 7) {
                     loadData();
+                } else if (menu == 8) {
+                    sortData();
                 } else if (menu == 9) {
                     System.out.println("\u001B[1mExiting program...\u001B[0m");
                     System.exit(0);

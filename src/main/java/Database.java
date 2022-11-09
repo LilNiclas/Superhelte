@@ -1,6 +1,10 @@
+
+import Comparator.*;
 import Superhero.Superhero;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Database {
 
