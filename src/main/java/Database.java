@@ -4,6 +4,7 @@ import Superhero.Superhero;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Database {
 
@@ -97,6 +98,11 @@ public class Database {
     public void sortDataByHumanAndStrengthPoints () {
         Collections.sort(heroDatabase, new HumanComparator().thenComparing(new StrengthpointComparator().reversed()));
         System.out.println("\n" + "Heroes sorted by humanstatus and secondary by strengthpoints: " + heroDatabase);
+    }
+
+    public void sortBy (String sortBy) {
+        Comparator comparator = new FlexibleComparator(sortBy);
+        heroDatabase.sort(comparator);
     }
 
 }
