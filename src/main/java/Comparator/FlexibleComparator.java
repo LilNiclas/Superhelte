@@ -19,7 +19,6 @@ public class FlexibleComparator implements Comparator<Superhero> {
             //Name
             case "name" -> {
                 return s1.getName().compareTo(s2.getName());
-
             }
             //Introyear
             case "introyear" -> {
