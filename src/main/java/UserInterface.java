@@ -305,7 +305,6 @@ public class UserInterface {
         int menu2 = 0;
         do {
             try {
-
                 System.out.println("\u001B[1m1.\u001B[0m Sort primary");
                 System.out.println("\u001B[1m2.\u001B[0m Sort primary data and secondary");
                 System.out.println("\u001B[1m-----------------------------\u001B[0m");
@@ -318,7 +317,6 @@ public class UserInterface {
                     System.out.println("\u001B[1m3.\u001B[0m Sort by humanstatus");
                     System.out.println("\u001B[1m4.\u001B[0m Sort by introyear");
                     System.out.println("\u001B[1m5.\u001B[0m Sort by strength");
-                    System.out.println("\u001B[1m6.\u001B[0m Go back");
                     System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
                     menu1 = scan.nextInt();
@@ -369,7 +367,6 @@ public class UserInterface {
                     System.out.println("\u001B[1m3.\u001B[0m Sort secondary data by humanstatus");
                     System.out.println("\u001B[1m4.\u001B[0m Sort secondary data by introyear");
                     System.out.println("\u001B[1m5.\u001B[0m Sort secondary data by strengthpoints");
-                    System.out.println("\u001B[1m6.\u001B[0m Go back");
                     System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
                     menu2 = scan.nextInt();
