@@ -354,7 +354,6 @@ public class UserInterface {
                 System.out.println("\u001B[1m3.\u001B[0m Sort primary data by humanstatus");
                 System.out.println("\u001B[1m4.\u001B[0m Sort primary data by introyear");
                 System.out.println("\u001B[1m5.\u001B[0m Sort primary data by strengthpoints");
-                System.out.println("\u001B[1m6.\u001B[0m Go back");
                 System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
                 menu1 = scan.nextInt();
@@ -480,6 +479,6 @@ public class UserInterface {
                     }
                 }
             }
-        } while (menu > 2 && menu1 > 5);
+        } while (menu==3 && menu1==6 && menu2==6);
     }
 }

@@ -69,29 +69,6 @@ public class Database {
         heroDatabase.sort(comparator);
     }
 
- /*
-    public void sortDataByName () {
-        Collections.sort(heroDatabase, new NameComparator());
-    }
-
-    public void sortIntroYear() {
-        Collections.sort(heroDatabase, new IntroYearComparator());
-    }
-
-    public void sortStrengthPoints(){
-        Collections.sort(heroDatabase, new StrengthpointComparator());
-    }
-
-    public void sortSuperPowers(){
-        Collections.sort(heroDatabase, new SuperpowerComparator());
-    }
-
-    public void sortHuman(){
-        Collections.sort(heroDatabase, new HumanComparator());
-    }
-
-  */
-
     //StrengthPoints secondary
     public void sortDataByNameAndStrengthPoints () {
         Collections.sort(heroDatabase, new NameComparator().thenComparing(new StrengthpointComparator().reversed()));

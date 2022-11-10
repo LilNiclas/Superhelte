@@ -57,36 +57,12 @@ public class Controller {
         database.createTestData();
     }
 
-/*
-    public void getSortedDataByName() {
-        database.sortDataByName();
 
-    }
-
-    public void getSortedDataByIntroYear(){
-        database.sortIntroYear();
-    }
-
-    public void getSortedDataByStrengthPoint(){
-        database.sortStrengthPoints();
-    }
-
-    public void getSortedDataBySuperpowers(){
-        database.sortSuperPowers();
-    }
-
-    public void getSortedDataByHuman(){
-        database.sortHuman();
-    }
-
- */
-
-
+    // Secondary strengthpoints
     public void getSortedDataByNameAndStrengthPoints() {
         database.sortDataByNameAndStrengthPoints();
     }
 
-    // Secondary strengthpoints
     public void getSortedDataByIntroYearAndStrengthPoints() {
         database.sortDataByIntroyearAndStrengthPoints();
     }
