@@ -298,6 +298,7 @@ public class UserInterface {
 
     public void sortData() {
         int menu1 = 0;
+        int menu2 = 0;
         do {
             System.out.println("\u001B[1m1.\u001B[0m Sort primary");
             System.out.println("\u001B[1m2.\u001B[0m Sort primary data and secondary");
@@ -305,6 +306,7 @@ public class UserInterface {
             System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
             menu = scan.nextInt();
+
             if (menu == 1) {
                 System.out.println("\u001B[1m1.\u001B[0m Sort by name");
                 System.out.println("\u001B[1m2.\u001B[0m Sort by superpowers ");
@@ -478,8 +480,6 @@ public class UserInterface {
                     }
                 }
             }
-
-        } while(menu >2&&menu1 >5);
+        } while (menu > 2 && menu1 > 5);
     }
 }
-

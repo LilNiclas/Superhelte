@@ -30,7 +30,6 @@ public class Controller {
         return database.deleteSuperhero(superhero);
     }
 
-
     public void saveData() {
         try {
             fileHandler.saveData(database.getHeroDatabase());
@@ -50,16 +49,24 @@ public class Controller {
         database.setChangesMade(true);
     }
 
+    public void sortBy(int sortBy) {
+        database.sortBy(sortBy);
+    }
 
+    public void createTestData() {
+        database.createTestData();
+    }
 
-
+/*
     public void getSortedDataByName() {
         database.sortDataByName();
 
     }
+
     public void getSortedDataByIntroYear(){
         database.sortIntroYear();
     }
+
     public void getSortedDataByStrengthPoint(){
         database.sortStrengthPoints();
     }
@@ -74,11 +81,8 @@ public class Controller {
 
  */
 
-    public void createTestData() {
-        database.createTestData();
-    }
 
-    public void getSortedDataByNameAndStrengthPoints(){
+    public void getSortedDataByNameAndStrengthPoints() {
         database.sortDataByNameAndStrengthPoints();
     }
 
@@ -86,10 +90,12 @@ public class Controller {
     public void getSortedDataByIntroYearAndStrengthPoints() {
         database.sortDataByIntroyearAndStrengthPoints();
     }
-    public void getSortedDataBySuperPowersAndStrengthPoints(){
+
+    public void getSortedDataBySuperPowersAndStrengthPoints() {
         database.sortDataBySuperpowersAndStrengthPoints();
     }
-    public void getSortedDataByHumanAndStrengthPoints(){
+
+    public void getSortedDataByHumanAndStrengthPoints() {
         database.sortDataByHumanAndStrengthPoints();
     }
 
@@ -165,4 +171,4 @@ public class Controller {
 }
 
 
-}
+

@@ -6,35 +6,35 @@ import java.util.Comparator;
 
 public class FlexibleComparator implements Comparator<Superhero> {
 
-    private String sortBy;
+    private int sortBy;
 
-    public FlexibleComparator(String sortBy) {
-        this.sortBy=sortBy;
+    public FlexibleComparator(int sortBy) {
+        this.sortBy = sortBy;
     }
 
     @Override
     public int compare(Superhero s1, Superhero s2) {
 
-        switch(sortBy) {
+        switch (sortBy) {
             //Name
-            case "name" -> {
+            case 1 -> { //name
                 return s1.getName().compareTo(s2.getName());
             }
-            //Introyear
-            case "introyear" -> {
-                return Integer.compare(s1.getIntroYear(), s2.getIntroYear());
-            }
-            // Strengthpoints
-            case "strengthpoints" -> {
-                return Double.compare(s1.getStrengthPoint(), s2.getStrengthPoint());
-            }
             //Superpowers
-            case "superpowers" -> {
+            case 2 -> {
                 return s1.getSuperpower().compareTo(s2.getSuperpower());
             }
             //Menneskestatus
-            case "ishuman" -> {
+            case 3 -> {
                 return Boolean.compare(s1.isHuman(), s2.isHuman());
+            }
+            //Introyear
+            case 4 -> {
+                return Integer.compare(s1.getIntroYear(), s2.getIntroYear());
+            }
+            // Strengthpoints
+            case 5 -> {
+                return Double.compare(s1.getStrengthPoint(), s2.getStrengthPoint());
             }
         }
         return 0;
