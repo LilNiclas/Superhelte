@@ -56,14 +56,6 @@ public class Database {
         heroDatabase.addAll(superheroes);
     }
 
-    public void createTestData () {
-        createSuperhero("Hans","Flot",false, 2000,2.5);
-        createSuperhero("Bob","Svæve",true, 1970,3.0);
-        createSuperhero("Bob","Irriterende",true, 2002,1.0);
-        createSuperhero("Bob","Random",true, 2010,5.0);
-        createSuperhero("Torben","Creepy",false, 1862,1.5);
-    }
-
     public void sortBy (int sortBy) {
         Comparator comparator = new FlexibleComparator(sortBy);
         heroDatabase.sort(comparator);

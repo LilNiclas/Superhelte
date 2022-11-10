@@ -55,6 +55,7 @@ public class FileHandler {
 
             superheroes.add(superheroObject);
         }
+        database.setChangesMade(false);
         return superheroes;
     }
 

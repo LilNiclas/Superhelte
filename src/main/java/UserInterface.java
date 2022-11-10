@@ -12,7 +12,6 @@ public class UserInterface {
     int menu = 0;
 
     public void userStart() {
-        controller.createTestData();
         boolean writingError = false;
         do {
             System.out.println("\u001B[1mWelcome to MySuperheroList\u001B[0m");
@@ -286,14 +285,18 @@ public class UserInterface {
     }
 
     public void saveData() {
-        controller.saveData();
-        System.out.println("The data have been saved");
-
+        if (controller.isChangesMade() == true) {
+            controller.saveData();
+            System.out.println("The data has been saved");
+        } else if (controller.isChangesMade() == false){
+            System.out.println("Data not saved. No changes were made");
+        }
     }
 
     public void loadData() {
         controller.loadData();
         System.out.println("Data loaded");
+        controller.setChangesMade(false);
     }
 
     public void sortData() {
@@ -301,185 +304,192 @@ public class UserInterface {
         int menu1 = 0;
         int menu2 = 0;
         do {
-            System.out.println("\u001B[1m1.\u001B[0m Sort primary");
-            System.out.println("\u001B[1m2.\u001B[0m Sort primary data and secondary");
-            System.out.println("\u001B[1m3.\u001B[0m Go back");
-            System.out.println("\u001B[1m-----------------------------\u001B[0m");
+            try {
 
-            menu = scan.nextInt();
-
-            if (menu == 1) {
-                System.out.println("\u001B[1m1.\u001B[0m Sort by name");
-                System.out.println("\u001B[1m2.\u001B[0m Sort by superpowers ");
-                System.out.println("\u001B[1m3.\u001B[0m Sort by humanstatus");
-                System.out.println("\u001B[1m4.\u001B[0m Sort by introyear");
-                System.out.println("\u001B[1m5.\u001B[0m Sort by strength");
-                System.out.println("\u001B[1m6.\u001B[0m Go back");
+                System.out.println("\u001B[1m1.\u001B[0m Sort primary");
+                System.out.println("\u001B[1m2.\u001B[0m Sort primary data and secondary");
                 System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
-                menu1 = scan.nextInt();
-                if (menu1 == 1) {
-                    controller.sortBy(menu1);
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
+                menu = scan.nextInt();
+
+                if (menu == 1) {
+                    System.out.println("\u001B[1m1.\u001B[0m Sort by name");
+                    System.out.println("\u001B[1m2.\u001B[0m Sort by superpowers ");
+                    System.out.println("\u001B[1m3.\u001B[0m Sort by humanstatus");
+                    System.out.println("\u001B[1m4.\u001B[0m Sort by introyear");
+                    System.out.println("\u001B[1m5.\u001B[0m Sort by strength");
+                    System.out.println("\u001B[1m6.\u001B[0m Go back");
+                    System.out.println("\u001B[1m-----------------------------\u001B[0m");
+
+                    menu1 = scan.nextInt();
+                    if (menu1 == 1) {
+                        controller.sortBy(menu1);
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 2) {
+                        controller.sortBy(menu1);
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 3) {
+                        controller.sortBy(menu1);
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 4) {
+                        controller.sortBy(menu1);
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 5) {
+                        controller.sortBy(menu1);
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
                     }
 
-                } else if (menu1 == 2) {
-                    controller.sortBy(menu1);
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
+                } else if (menu == 2) {
 
-                } else if (menu1 == 3) {
-                    controller.sortBy(menu1);
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
+                    System.out.println("\u001B[1m1.\u001B[0m Sort primary data by name");
+                    System.out.println("\u001B[1m2.\u001B[0m Sort primary data by superpower");
+                    System.out.println("\u001B[1m3.\u001B[0m Sort primary data by humanstatus");
+                    System.out.println("\u001B[1m4.\u001B[0m Sort primary data by introyear");
+                    System.out.println("\u001B[1m5.\u001B[0m Sort primary data by strengthpoints");
+                    System.out.println("\u001B[1m-----------------------------\u001B[0m");
 
-                } else if (menu1 == 4) {
-                    controller.sortBy(menu1);
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
+                    menu1 = scan.nextInt();
 
-                } else if (menu1 == 5) {
-                    controller.sortBy(menu1);
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
+                    System.out.println("\u001B[1m1.\u001B[0m Sort secondary data by name");
+                    System.out.println("\u001B[1m2.\u001B[0m Sort secondary data by superpower");
+                    System.out.println("\u001B[1m3.\u001B[0m Sort secondary data by humanstatus");
+                    System.out.println("\u001B[1m4.\u001B[0m Sort secondary data by introyear");
+                    System.out.println("\u001B[1m5.\u001B[0m Sort secondary data by strengthpoints");
+                    System.out.println("\u001B[1m6.\u001B[0m Go back");
+                    System.out.println("\u001B[1m-----------------------------\u001B[0m");
+
+                    menu2 = scan.nextInt();
+
+                    if (menu1 == 1 && menu2 == 2) {
+                        controller.getSortedDatabyNameAndSuperPowers();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 1 && menu2 == 3) {
+                        controller.getSortedDataByNameAndHuman();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 1 && menu2 == 4) {
+                        controller.getSortedDataByNameAndIntroyear();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 1 && menu2 == 5) {
+                        controller.getSortedDataByNameAndStrengthPoints();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 2 && menu2 == 1) {
+                        controller.getSortedDataBySuperpowersAndName();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 2 && menu2 == 3) {
+                        controller.getSortedDataBySuperpowersAndHuman();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 2 && menu2 == 4) {
+                        controller.getSortedDataBySuperpowersAndIntroyear();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 2 && menu2 == 5) {
+                        controller.getSortedDataBySuperPowersAndStrengthPoints();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 3 && menu2 == 1) {
+                        controller.getSortedDataByHumanAndName();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+
+                    } else if (menu1 == 3 && menu2 == 2) {
+                        controller.getSortedDataByHumanAndSuperPowers();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 3 && menu2 == 4) {
+                        controller.getSortedDataByHumanAndIntroyear();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 3 && menu2 == 5) {
+                        controller.getSortedDataByHumanAndStrengthPoints();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 4 && menu2 == 1) {
+                        controller.getSortedDataByIntroyearAndName();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 4 && menu2 == 2) {
+                        controller.getSortedDataByIntroyearAndSuperPowers();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 4 && menu2 == 3) {
+                        controller.getSortedDataByIntroyearAndHuman();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 4 && menu2 == 5) {
+                        controller.getSortedDataByIntroYearAndStrengthPoints();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 5 && menu2 == 1) {
+                        controller.getSortedDataByStrengthPointsAndName();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 5 && menu2 == 2) {
+                        controller.getSortedDataByStrengthPointsAndSuperpowers();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 5 && menu2 == 3) {
+                        controller.getSortedDataByStrengthPointsAndHuman();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
+                    } else if (menu1 == 5 && menu2 == 4) {
+                        controller.getSortedDataByStrengthPointsAndIntroyear();
+                        for (Superhero hero : controller.getHeroDatabase()) {
+                            System.out.println(hero);
+                        }
                     }
                 }
-
-            } else if (menu == 2) {
-                System.out.println("\u001B[1m1.\u001B[0m Sort primary data by name");
-                System.out.println("\u001B[1m2.\u001B[0m Sort primary data by superpower");
-                System.out.println("\u001B[1m3.\u001B[0m Sort primary data by humanstatus");
-                System.out.println("\u001B[1m4.\u001B[0m Sort primary data by introyear");
-                System.out.println("\u001B[1m5.\u001B[0m Sort primary data by strengthpoints");
-                System.out.println("\u001B[1m-----------------------------\u001B[0m");
-
-                menu1 = scan.nextInt();
-
-                System.out.println("\u001B[1m1.\u001B[0m Sort secondary data by name");
-                System.out.println("\u001B[1m2.\u001B[0m Sort secondary data by superpower");
-                System.out.println("\u001B[1m3.\u001B[0m Sort secondary data by humanstatus");
-                System.out.println("\u001B[1m4.\u001B[0m Sort secondary data by introyear");
-                System.out.println("\u001B[1m5.\u001B[0m Sort secondary data by strengthpoints");
-                System.out.println("\u001B[1m6.\u001B[0m Go back");
-                System.out.println("\u001B[1m-----------------------------\u001B[0m");
-
-                menu2 = scan.nextInt();
-
-                if (menu1 == 1 && menu2 == 2) {
-                    controller.getSortedDatabyNameAndSuperPowers();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 1  && menu2 == 3) {
-                    controller.getSortedDataByNameAndHuman();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 1 && menu2 == 4) {
-                    controller.getSortedDataByNameAndIntroyear();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 1 && menu2 == 5) {
-                    controller.getSortedDataByNameAndStrengthPoints();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 2 && menu2 == 1) {
-                    controller.getSortedDataBySuperpowersAndName();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 2 && menu2 == 3) {
-                    controller.getSortedDataBySuperpowersAndHuman();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 2 && menu2 == 4) {
-                    controller.getSortedDataBySuperpowersAndIntroyear();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 2 && menu2 == 5) {
-                    controller.getSortedDataBySuperPowersAndStrengthPoints();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 3 && menu2 == 1) {
-                    controller.getSortedDataByHumanAndName();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-
-                } else if (menu1 == 3 && menu2 == 2) {
-                    controller.getSortedDataByHumanAndSuperPowers();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 3 && menu2 == 4) {
-                    controller.getSortedDataByHumanAndIntroyear();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 3 && menu2 == 5) {
-                    controller.getSortedDataByHumanAndStrengthPoints();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 4 && menu2 == 1) {
-                    controller.getSortedDataByIntroyearAndName();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 4 && menu2 == 2) {
-                    controller.getSortedDataByIntroyearAndSuperPowers();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 4 && menu2 == 3) {
-                    controller.getSortedDataByIntroyearAndHuman();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 4 && menu2 == 5) {
-                    controller.getSortedDataByIntroYearAndStrengthPoints();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 5 && menu2 == 1) {
-                    controller.getSortedDataByStrengthPointsAndName();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 5 && menu2 == 2) {
-                    controller.getSortedDataByStrengthPointsAndSuperpowers();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 5 && menu2 == 3) {
-                    controller.getSortedDataByStrengthPointsAndHuman();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                } else if (menu1 == 5 && menu2 == 4) {
-                    controller.getSortedDataByStrengthPointsAndIntroyear();
-                    for (Superhero hero : controller.getHeroDatabase()) {
-                        System.out.println(hero);
-                    }
-                }
+            } catch (InputMismatchException ime) {
+                System.out.println("\u001B[4mWriting error, write a number shown on screen\u001B[0m");
+                scan.nextLine();
+                writingError = true;
             }
-        } while (menu==3 && menu1==6 && menu2==6);
+        } while (menu == 3 && menu1 == 6 && menu2 == 6 || writingError == true);
     }
 }

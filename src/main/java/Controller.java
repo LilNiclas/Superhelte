@@ -46,15 +46,15 @@ public class Controller {
     }
 
     public void setChangesMade(boolean changesMade) {
-        database.setChangesMade(true);
+        database.setChangesMade(changesMade);
+    }
+
+    public boolean isChangesMade(){
+        return database.isChangesMade();
     }
 
     public void sortBy(int sortBy) {
         database.sortBy(sortBy);
-    }
-
-    public void createTestData() {
-        database.createTestData();
     }
 
 
