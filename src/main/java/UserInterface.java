@@ -297,6 +297,7 @@ public class UserInterface {
     }
 
     public void sortData() {
+        boolean writingError = false;
         int menu1 = 0;
         int menu2 = 0;
         do {
