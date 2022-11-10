@@ -54,7 +54,7 @@ public class Superhero{
     }
 
     public String toString() {
-        return ("\nName: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
+        return ("Name: " + name + "\n" + "Superpower: " + superpower + "\n" + "Human: " + human
                 + "\n" + "Introduction year: " + introYear + "\n" + "Strength points: " + strengthPoint + " \n ");
     }
 }

@@ -64,51 +64,6 @@ public class Database {
         createSuperhero("Torben","Creepy",false, 1862,1.5);
     }
 
-    public void sortDataByName () {
-        Collections.sort(heroDatabase, new NameComparator());
-        System.out.println("\n" + "Heroes sorted by name: " + heroDatabase);
-    }
-
-    public void sortIntroYear() {
-        Collections.sort(heroDatabase, new IntroYearComparator());
-        System.out.println("\n" + "Heroes sorted by introyear: " + heroDatabase);
-    }
-
-    public void sortStrengthPoints(){
-        Collections.sort(heroDatabase, new StrengthpointComparator());
-        System.out.println("\n" + "Heroes sorted by strength: " + heroDatabase);
-    }
-
-    public void sortSuperPowers(){
-        Collections.sort(heroDatabase, new SuperpowerComparator());
-        System.out.println("\n" + "Heroes sorted by superheroes: " + heroDatabase);
-    }
-
-    public void sortHuman(){
-        Collections.sort(heroDatabase, new HumanComparator());
-        System.out.println("\n" + "Heroes sorted by humanstatus: " + heroDatabase);
-    }
-
-    public void sortDataByNameAndStrengthPoints () {
-        Collections.sort(heroDatabase, new NameComparator().thenComparing(new StrengthpointComparator().reversed()));
-        System.out.println("\n" + "Heroes sorted by name and secondary by strengthpoints: " + heroDatabase);
-    }
-
-    public void sortDataByIntroyearAndStrengthPoints () {
-        Collections.sort(heroDatabase, new IntroYearComparator().thenComparing(new StrengthpointComparator().reversed()));
-        System.out.println("\n" + "Heroes sorted by introyear and secondary by strengthpoints: " + heroDatabase);
-    }
-
-    public void sortDataBySuperpowersAndStrengthPoints () {
-        Collections.sort(heroDatabase, new SuperpowerComparator().thenComparing(new StrengthpointComparator().reversed()));
-        System.out.println("\n" + "Heroes sorted by superpowers and secondary by strengthpoints: " + heroDatabase);
-    }
-
-    public void sortDataByHumanAndStrengthPoints () {
-        Collections.sort(heroDatabase, new HumanComparator().thenComparing(new StrengthpointComparator().reversed()));
-        System.out.println("\n" + "Heroes sorted by humanstatus and secondary by strengthpoints: " + heroDatabase);
-    }
-
     public void sortBy (String sortBy) {
         Comparator comparator = new FlexibleComparator(sortBy);
         heroDatabase.sort(comparator);

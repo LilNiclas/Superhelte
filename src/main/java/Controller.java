@@ -72,6 +72,8 @@ public class Controller {
         database.sortHuman();
     }
 
+ */
+
     public void createTestData() {
         database.createTestData();
     }
@@ -80,7 +82,8 @@ public class Controller {
         database.sortDataByNameAndStrengthPoints();
     }
 
-    public void getSortedDataByIntroYearAndStrengthPoints(){
+    // Secondary strengthpoints
+    public void getSortedDataByIntroYearAndStrengthPoints() {
         database.sortDataByIntroyearAndStrengthPoints();
     }
     public void getSortedDataBySuperPowersAndStrengthPoints(){
@@ -90,6 +93,76 @@ public class Controller {
         database.sortDataByHumanAndStrengthPoints();
     }
 
+    // Secondary Superpowers
+    public void getSortedDatabyNameAndSuperPowers() {
+        database.sortDataByNameAndSuperPowers();
+    }
+
+    public void getSortedDataByIntroyearAndSuperPowers() {
+        database.sortDataByIntroyearAndSuperPowers();
+    }
+
+    public void getSortedDataByHumanAndSuperPowers() {
+        database.sortDataByHumanAndSuperPowers();
+    }
+
+    public void getSortedDataByStrengthPointsAndSuperpowers() {
+        database.sortDataByStrengthPointsAndSuperpowers();
+    }
+
+    // Secondary Introyear
+    public void getSortedDataByNameAndIntroyear() {
+        database.sortDataByNameAndIntroyear();
+    }
+
+    public void getSortedDataBySuperpowersAndIntroyear() {
+        database.sortDataBySuperpowersAndIntroyear();
+    }
+
+    public void getSortedDataByHumanAndIntroyear() {
+        database.sortDataByHumanAndIntroyear();
+    }
+
+    public void getSortedDataByStrengthPointsAndIntroyear() {
+        database.sortDataByStrengthPointsAndIntroyear();
+    }
+
+
+    // Secondary Human
+    public void getSortedDataByIntroyearAndHuman() {
+        database.sortDataByIntroyearAndHuman();
+    }
+
+    public void getSortedDataByNameAndHuman() {
+        database.sortDataByNameAndHuman();
+    }
+
+    public void getSortedDataByStrengthPointsAndHuman() {
+        database.sortDataByStrengthPointsAndHuman();
+    }
+
+    public void getSortedDataBySuperpowersAndHuman() {
+        database.sortDataBySuperpowersAndHuman();
+    }
+
+
+    // Secondary Name
+    public void getSortedDataByIntroyearAndName() {
+        database.sortDataByIntroyearAndName();
+    }
+
+    public void getSortedDataByStrengthPointsAndName() {
+        database.sortDataByStrengthPointsAndName();
+    }
+
+    public void getSortedDataBySuperpowersAndName() {
+        database.sortDataBySuperpowersAndName();
+    }
+
+    public void getSortedDataByHumanAndName () {
+        database.sortDataByHumanAndName();
+    }
+}
 
 
 }
